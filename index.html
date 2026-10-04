@@ -1430,7 +1430,7 @@ const SITE = {
   contourInterval: 25,                      // metres between contour lines in the hero
   mapExtent: [[-22, -37], [52, 43]],        // [[west, south], [east, north]] in degrees
   polarInset: true,                         // draws Antarctica in a south-polar inset, bottom left
-  formEndpoint: ''                          // e.g. 'https://formspree.io/f/xxxxxx'. Empty = opens the visitor's email app
+  formEndpoint: 'https://formsubmit.co/ajax/dkimani.eng@gmail.com'  // after activation, swap the email for FormSubmit's random alias. Empty = opens the visitor's email app
 };
 
 const $ = (s, r = document) => r.querySelector(s);
@@ -2205,8 +2205,10 @@ function openCase(i) {
     if (SITE.formEndpoint) {
       submit.disabled = true; status.textContent = 'Sending…';
       try {
-        const r = await fetch(SITE.formEndpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(d) });
-        if (!r.ok) throw new Error(`error ${r.status}`);
+        const payload = { ...d, _subject: `Portfolio: ${d.topic} from ${d.name}`, _replyto: d.email, _template: 'table' };
+        const r = await fetch(SITE.formEndpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload) });
+        const res = await r.json().catch(() => ({}));
+        if (!r.ok || String(res.success) === 'false') throw new Error(res.message || `error ${r.status}`);
         form.reset(); status.dataset.tone = 'ok';
         status.textContent = `Message sent. I'll reply to ${d.email}.`;
       } catch (err) {
