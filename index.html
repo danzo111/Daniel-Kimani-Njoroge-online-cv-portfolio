@@ -1,0 +1,2225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Daniel Njoroge · Geomatics Engineer &amp; Drone Pilot</title>
+<meta name="description" content="Daniel Kimani Njoroge is a geomatics engineer and SACAA-certified drone pilot in Johannesburg: UAV radar surveys in Antarctica, LiDAR and laser scanning, remote sensing and web GIS.">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0C1211">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Daniel Njoroge · Geomatics Engineer &amp; Drone Pilot">
+<meta property="og:description" content="UAV radar over Antarctic ice, LiDAR and laser scanning, remote sensing and web GIS.">
+<meta property="og:image" content="assets/fimbul-gpr-flight.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230C1211'/%3E%3Cg fill='none' stroke='%23E2A94F' stroke-width='1.8'%3E%3Cellipse cx='16' cy='17' rx='11' ry='9'/%3E%3Cellipse cx='17.5' cy='15.5' rx='6.5' ry='5'/%3E%3Ccircle cx='18.5' cy='14.5' r='1.6' fill='%23E2A94F'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Martian+Mono:wdth,wght@75..112.5,100..800&family=Newsreader:ital,opsz,wght@1,6..72,300..600&display=swap">
+<script>try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Daniel Kimani Njoroge","jobTitle":"Geomatics Engineer","email":"mailto:dkimani.eng@gmail.com","nationality":"Kenyan","alumniOf":"University of Cape Town","address":{"@type":"PostalAddress","addressLocality":"Johannesburg","addressCountry":"ZA"},"sameAs":["https://github.com/danzo111","https://www.linkedin.com/in/daniel-kimani-geoinformatics-gis"]}</script>
+<style>
+:root{
+  /* Layout: a map sheet. The hero is a neatline-framed live terrain with a legend collar;
+     the sections below sit on one 1200px sheet, with mono "collar" labels heading each one. */
+  --ground:#0C1211;
+  --ground-2:#111917;
+  --panel:#141D1B;
+  --rule:#1F2C29;
+  --rule-2:#2D3F3B;
+  --ink:#E6ECE6;
+  --ink-2:#A3B1AC;
+  --ink-3:#7A8B86;
+  --accent:#E2A94F;
+  --accent-ink:#1A1106;
+  --accent-wash:rgba(226,169,79,.12);
+  --contour-lo:#36605A;
+  --contour-hi:#DCA85A;
+  --dot:#2A3B37;
+  --veil:rgba(12,18,17,.94);
+  --bar:#BF8838;
+  /* Hypsometric tints, high ground to low ground */
+  --hyp-1:#E9DAB6; --hyp-2:#D2B97F; --hyp-3:#A9A873; --hyp-4:#74946F;
+  --hyp-5:#4D7C6F; --hyp-6:#35625D; --hyp-7:#254B4A;
+
+  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --f-mono:"Martian Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+
+  --wrap:1200px;
+  --gutter:clamp(16px,4vw,40px);
+  --head-h:68px;
+  --nl:clamp(8px,1.6vw,22px);
+  --r:5px;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --ground:#EDF0EA; --ground-2:#E5E9E2; --panel:#F8FAF6; --rule:#D3DAD2; --rule-2:#BCC7BD;
+    --ink:#0F1F1D; --ink-2:#44564F; --ink-3:#5F706A;
+    --accent:#8A560A; --accent-ink:#FFF8EC; --accent-wash:rgba(138,86,10,.09);
+    --contour-lo:#A3B8AB; --contour-hi:#B07A2C; --dot:#CDD6CD; --veil:rgba(237,240,234,.95); --bar:#8A560A;
+    color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --ground:#EDF0EA; --ground-2:#E5E9E2; --panel:#F8FAF6; --rule:#D3DAD2; --rule-2:#BCC7BD;
+  --ink:#0F1F1D; --ink-2:#44564F; --ink-3:#5F706A;
+  --accent:#8A560A; --accent-ink:#FFF8EC; --accent-wash:rgba(138,86,10,.09);
+  --contour-lo:#A3B8AB; --contour-hi:#B07A2C; --dot:#CDD6CD; --veil:rgba(237,240,234,.95); --bar:#8A560A;
+  color-scheme:light;
+}
+:root[data-theme="dark"]{
+  --ground:#0C1211; --ground-2:#111917; --panel:#141D1B; --rule:#1F2C29; --rule-2:#2D3F3B;
+  --ink:#E6ECE6; --ink-2:#A3B1AC; --ink-3:#7A8B86;
+  --accent:#E2A94F; --accent-ink:#1A1106; --accent-wash:rgba(226,169,79,.12);
+  --contour-lo:#36605A; --contour-hi:#DCA85A; --dot:#2A3B37; --veil:rgba(12,18,17,.94); --bar:#BF8838;
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--ground);color:var(--ink);
+  font-family:var(--f-display);font-stretch:100%;font-size:1.0625rem;line-height:1.6;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;
+}
+body:has(dialog[open]){overflow:hidden}
+img,canvas{max-width:100%}
+a{color:inherit}
+h1,h2,h3,h4{text-wrap:balance}
+p{text-wrap:pretty}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+::selection{background:var(--accent);color:var(--accent-ink)}
+[hidden]{display:none!important}
+.wrap{width:100%;max-width:calc(var(--wrap) + 2 * var(--gutter));margin-inline:auto;padding-inline:var(--gutter)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--accent);color:var(--accent-ink);padding:10px 16px;border-radius:var(--r);font-weight:600;text-decoration:none}
+.skip:focus{top:12px}
+
+/* Shared type */
+.eyebrow{
+  display:flex;align-items:center;gap:12px;margin:0;
+  font:500 .68rem/1 var(--f-mono);font-stretch:80%;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+.sec-title{
+  margin:0;font-family:var(--f-display);font-stretch:118%;font-weight:700;
+  font-size:clamp(2rem,4.4vw,3.5rem);line-height:1.02;letter-spacing:-.02em;max-width:19ch;
+}
+.sec-note{margin:0;max-width:40ch;color:var(--ink-2);font-size:.95rem;line-height:1.55}
+
+/* Buttons */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6em;height:50px;padding:0 24px;
+  border-radius:var(--r);border:1px solid transparent;font:600 .95rem/1 var(--f-display);text-decoration:none;cursor:pointer;
+  transition:background-color .2s,border-color .2s,color .2s,transform .2s;
+}
+.btn .arr{transition:transform .25s}
+.btn:hover .arr{transform:translateX(4px)}
+.btn-solid{background:var(--accent);color:var(--accent-ink)}
+.btn-solid:hover{background:color-mix(in srgb,var(--accent) 86%,var(--ink))}
+.btn-line{border-color:var(--rule-2);color:var(--ink);background:color-mix(in srgb,var(--ground) 55%,transparent);backdrop-filter:blur(6px)}
+.btn-line:hover{border-color:var(--ink-3)}
+.btn-sm{height:40px;padding:0 16px;font-size:.88rem}
+.icon-btn{
+  display:inline-grid;place-items:center;width:40px;height:40px;border-radius:var(--r);
+  border:1px solid var(--rule-2);background:transparent;color:var(--ink);cursor:pointer;transition:border-color .2s,background-color .2s;
+}
+.icon-btn:hover{border-color:var(--ink-3);background:var(--accent-wash)}
+.icon-btn svg{width:18px;height:18px}
+
+/* Header */
+.site-head{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:60;height:var(--head-h);
+  border-bottom:1px solid transparent;transition:background-color .3s,border-color .3s;
+}
+.site-head.is-stuck,.site-head.menu-open{background:color-mix(in srgb,var(--ground) 84%,transparent);backdrop-filter:blur(14px) saturate(1.15);-webkit-backdrop-filter:blur(14px) saturate(1.15);border-bottom-color:var(--rule)}
+.head-row{display:flex;align-items:center;justify-content:space-between;gap:20px;height:100%}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
+.brand-mark{width:26px;height:26px;color:var(--accent);flex:none}
+.brand-name{font-stretch:125%;font-weight:700;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+.nav ul{display:flex;gap:2px;list-style:none;margin:0;padding:0}
+.nav a{position:relative;display:block;padding:8px 12px;font-size:.88rem;font-weight:500;color:var(--ink-2);text-decoration:none;border-radius:var(--r);transition:color .2s}
+.nav a:hover{color:var(--ink)}
+.nav a[aria-current="true"]{color:var(--ink)}
+.nav a[aria-current="true"]::after{content:"";position:absolute;left:50%;bottom:1px;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:var(--accent)}
+.head-actions{display:flex;align-items:center;gap:8px}
+.theme-icon-sun{display:none}
+[data-mode="light"] .theme-icon-sun{display:block}
+[data-mode="light"] .theme-icon-moon{display:none}
+.menu-btn{display:none}
+.mobile-nav{position:absolute;top:100%;left:0;right:0;background:var(--ground);border-bottom:1px solid var(--rule);padding:8px var(--gutter) 20px}
+.mobile-nav ul{list-style:none;margin:0;padding:0;display:grid}
+.mobile-nav a{display:flex;justify-content:space-between;padding:14px 2px;border-bottom:1px solid var(--rule);text-decoration:none;font-weight:600;font-stretch:112%}
+.mobile-nav a span{font:400 .66rem/1 var(--f-mono);color:var(--ink-3);align-self:center}
+@media (max-width:980px){
+  .nav{display:none}
+  .menu-btn{display:inline-grid}
+}
+@media (max-width:420px){ .head-actions .btn-sm{display:none} }
+
+/* Hero */
+.hero{
+  position:relative;isolation:isolate;overflow:hidden;
+  margin-top:calc(var(--head-h) * -1);
+  min-height:clamp(640px,94svh,940px);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding-top:calc(var(--head-h) + 56px);
+}
+#terrain{position:absolute;inset:0;width:100%;height:100%;z-index:-3;display:block;touch-action:pan-y}
+.hero-veil{
+  position:absolute;inset:0;z-index:-2;pointer-events:none;
+  background:
+    linear-gradient(90deg,var(--veil) 0%,color-mix(in srgb,var(--veil) 72%,transparent) 34%,transparent 66%),
+    linear-gradient(0deg,var(--ground) 0%,color-mix(in srgb,var(--ground) 60%,transparent) 22%,transparent 42%);
+}
+.neatline{position:absolute;z-index:-1;inset:calc(var(--head-h) + 4px) var(--nl) var(--nl);border:1px solid var(--rule-2);pointer-events:none}
+.neatline::after{content:"";position:absolute;inset:5px;border:1px solid var(--rule)}
+.tick{position:absolute;font:500 .58rem/1 var(--f-mono);font-stretch:75%;letter-spacing:.05em;color:var(--ink-3);white-space:nowrap}
+.tick-x{top:0;transform:translateX(-50%);padding-top:13px}
+.tick-x::before{content:"";position:absolute;top:0;left:50%;width:1px;height:10px;background:var(--rule-2)}
+.tick-y{left:0;transform:translateY(-50%);padding-left:13px}
+.tick-y::before{content:"";position:absolute;left:0;top:50%;width:10px;height:1px;background:var(--rule-2)}
+.tick-y span{display:block;writing-mode:vertical-rl;transform:rotate(180deg)}
+.hero .wrap{padding-inline:calc(var(--gutter) + var(--nl) + 14px)}
+.hero-inner{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:22px;padding-bottom:clamp(40px,6vh,72px);pointer-events:none}
+.hero-inner a,.hero-inner button{pointer-events:auto}
+.hero-status{display:inline-flex;align-items:center;gap:10px;margin:0;font:500 .7rem/1 var(--f-mono);font-stretch:80%;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.status-dot{position:relative;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.status-dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--accent);animation:ping 2.4s ease-out infinite}
+@keyframes ping{from{transform:scale(.6);opacity:1}to{transform:scale(2.1);opacity:0}}
+.hero-name{
+  margin:0;font-family:var(--f-display);font-stretch:125%;font-weight:800;
+  font-size:min(9.6rem,10.2vw);line-height:.86;letter-spacing:-.025em;text-transform:uppercase;
+}
+.hero-name .ln{display:block;overflow:hidden;padding-bottom:.04em}
+.hero-name .ln > span{display:inline-block;animation:rise .9s cubic-bezier(.2,.75,.1,1) both}
+.hero-name .ln:nth-child(2) > span{animation-delay:.09s}
+@keyframes rise{from{transform:translateY(105%)}to{transform:none}}
+.hero-role{margin:0;font-stretch:125%;font-weight:600;font-size:.82rem;letter-spacing:.26em;text-transform:uppercase;color:var(--accent)}
+.hero-lead{margin:0;max-width:38ch;font-size:clamp(1.08rem,1.55vw,1.3rem);line-height:1.5;color:var(--ink-2)}
+.hero-lead em{font-family:var(--f-serif);font-style:italic;font-size:1.14em;color:var(--ink);letter-spacing:-.005em}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.hero-collar{
+  position:relative;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:20px 40px;
+  padding-top:18px;padding-bottom:calc(var(--nl) + 22px);
+}
+.hero-collar::before{content:"";position:absolute;top:0;left:calc(var(--gutter) + var(--nl) + 14px);right:calc(var(--gutter) + var(--nl) + 14px);height:1px;background:var(--rule-2)}
+.collar-stats{display:flex;gap:clamp(18px,3.5vw,44px);margin:0}
+.collar-stats div{display:flex;flex-direction:column-reverse;gap:6px}
+.collar-stats dd{margin:0;font-stretch:125%;font-weight:700;font-size:clamp(1.4rem,2.4vw,1.9rem);line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap}
+.collar-stats dt{font:500 .6rem/1.3 var(--f-mono);font-stretch:78%;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);max-width:17ch}
+.collar-readout{justify-self:center;display:flex;flex-wrap:wrap;gap:6px 16px;margin:0;font:500 .66rem/1.3 var(--f-mono);font-stretch:80%;letter-spacing:.04em;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.collar-readout b{font-weight:500;color:var(--ink-3);text-transform:uppercase;letter-spacing:.1em;margin-right:6px}
+.collar-scale{display:flex;align-items:flex-end;gap:18px;color:var(--ink-2)}
+.scalebar{display:grid;gap:5px;font:500 .58rem/1 var(--f-mono);font-stretch:78%;color:var(--ink-3)}
+.scalebar svg{display:block;height:6px;color:var(--ink-2)}
+.scalebar-labels{display:flex;justify-content:space-between}
+.scalebar-meta{font:500 .58rem/1 var(--f-mono);font-stretch:78%;letter-spacing:.05em;color:var(--ink-3);text-transform:uppercase}
+.north{width:22px;height:34px;color:var(--ink-2)}
+@media (max-width:900px){
+  .hero-collar{grid-template-columns:1fr;gap:16px}
+  .collar-readout{justify-self:start}
+  .collar-scale{display:none}
+}
+@media (max-width:640px){
+  .hero{min-height:0;padding-top:calc(var(--head-h) + 72px)}
+  .hero-veil{background:linear-gradient(0deg,var(--ground) 0%,color-mix(in srgb,var(--veil) 78%,transparent) 45%,color-mix(in srgb,var(--veil) 40%,transparent) 100%)}
+  .tick-y{display:none}
+  .hero .wrap{padding-inline:calc(var(--gutter) + 6px)}
+  .hero-collar::before{left:calc(var(--gutter) + 6px);right:calc(var(--gutter) + 6px)}
+  .hero-cta .btn{flex:1 1 auto}
+  .collar-stats{justify-content:space-between;width:100%}
+}
+
+/* Affiliations strip */
+.sectors{border-block:1px solid var(--rule);background:var(--ground-2)}
+.sectors-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px 36px;padding-block:22px}
+.sectors-label{margin:0;font:500 .64rem/1 var(--f-mono);font-stretch:80%;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.sector-list{display:flex;flex-wrap:wrap;gap:10px 28px;list-style:none;margin:0;padding:0}
+.sector-list li{display:flex;align-items:center;gap:10px;font-stretch:125%;font-weight:600;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-2)}
+.sector-list li::before{content:"";width:6px;height:6px;border:1px solid var(--accent);border-radius:50%}
+
+/* Sections */
+.section{padding-block:clamp(80px,10vw,140px);scroll-margin-top:var(--head-h)}
+.section + .section{border-top:1px solid var(--rule)}
+.sec-head{display:grid;gap:18px;margin-bottom:clamp(40px,5vw,64px)}
+.sec-head-split{grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:18px 40px}
+.sec-head-split > div:not(.filters){display:grid;gap:18px}
+@media (max-width:820px){ .sec-head-split{grid-template-columns:1fr} }
+
+/* About */
+.about-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(36px,6vw,96px);align-items:start}
+.about-copy{display:grid;gap:22px;min-width:0}
+.about-copy p{margin:0;color:var(--ink-2);max-width:62ch}
+.about-copy .lead{font-size:clamp(1.3rem,2.1vw,1.62rem);line-height:1.42;color:var(--ink);max-width:30ch;font-weight:400}
+.lead em{font-family:var(--f-serif);font-style:italic;font-size:1.08em}
+.principles{list-style:none;margin:18px 0 0;padding:0;border-top:1px solid var(--rule)}
+.principles li{display:grid;grid-template-columns:200px minmax(0,1fr);gap:8px 28px;padding-block:20px;border-bottom:1px solid var(--rule)}
+.principles h3{margin:0;font-size:1rem;font-weight:600;font-stretch:112%}
+.principles p{font-size:.95rem}
+.about-card{display:grid;gap:22px;min-width:0}
+.portrait{position:relative;margin:0;aspect-ratio:4/5;max-width:100%;border:1px solid var(--rule-2);border-radius:var(--r);overflow:hidden;background:var(--ground-2)}
+.portrait .tile{position:absolute;inset:0;width:100%;height:100%}
+.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,color-mix(in srgb,var(--ground) 88%,transparent) 100%)}
+.monogram{position:absolute;left:22px;bottom:52px;z-index:1;font-stretch:125%;font-weight:800;font-size:clamp(4rem,9vw,6.5rem);line-height:.8;letter-spacing:-.03em;color:var(--ink)}
+.portrait figcaption{position:absolute;left:22px;right:22px;bottom:18px;z-index:1;display:flex;justify-content:space-between;gap:12px;font:500 .62rem/1 var(--f-mono);font-stretch:80%;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.facts{margin:0;display:grid;border-top:1px solid var(--rule)}
+.facts > div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;padding-block:13px;border-bottom:1px solid var(--rule)}
+.facts dt{font:500 .64rem/1.7 var(--f-mono);font-stretch:80%;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.facts dd{margin:0;font-size:.95rem}
+@media (max-width:900px){
+  .about-grid{grid-template-columns:1fr}
+  .about-card{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);align-items:start}
+}
+@media (max-width:640px){
+  .about-card{grid-template-columns:1fr}
+  .principles li{grid-template-columns:1fr}
+}
+
+/* Toolbox */
+.layers-head{display:grid;grid-template-columns:28px minmax(200px,280px) minmax(0,1fr);gap:20px;padding-bottom:12px;font:500 .62rem/1 var(--f-mono);font-stretch:80%;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.layers{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule-2)}
+.layer{display:grid;grid-template-columns:28px minmax(200px,280px) minmax(0,1fr);gap:20px;align-items:start;padding-block:22px;border-bottom:1px solid var(--rule);transition:background-color .25s}
+.layer:hover{background:linear-gradient(90deg,var(--accent-wash),transparent 70%)}
+.swatch{width:18px;height:18px;margin-top:3px;border-radius:3px;background:var(--sw);box-shadow:inset 0 0 0 1px rgba(0,0,0,.18)}
+.layer-name{display:grid;gap:4px}
+.layer-name h3{margin:0;font-size:1.06rem;font-weight:600;font-stretch:112%;line-height:1.3}
+.layer-name .count{font:500 .62rem/1 var(--f-mono);font-stretch:80%;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0;min-width:0}
+.chips li{font:500 .72rem/1 var(--f-mono);font-stretch:82%;letter-spacing:.02em;padding:8px 11px;border:1px solid var(--rule-2);border-radius:3px;color:var(--ink-2);background:var(--ground)}
+@media (max-width:760px){
+  .layers-head{display:none}
+  .layer{grid-template-columns:22px minmax(0,1fr);gap:12px 14px}
+  .layer .chips{grid-column:2}
+}
+
+/* Work */
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filter{
+  display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 15px;border-radius:999px;cursor:pointer;
+  border:1px solid var(--rule-2);background:transparent;color:var(--ink-2);font:500 .84rem/1 var(--f-display);transition:all .2s;
+}
+.filter:hover{color:var(--ink);border-color:var(--ink-3)}
+.filter[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--ground)}
+.filter .n{font:500 .62rem/1 var(--f-mono);opacity:.7;font-variant-numeric:tabular-nums}
+.projects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;grid-auto-flow:dense}
+.project{
+  position:relative;display:flex;flex-direction:column;min-width:0;
+  background:var(--panel);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;
+  transition:border-color .25s,transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s;
+}
+.project:hover{border-color:var(--rule-2);transform:translateY(-3px);box-shadow:0 18px 40px -24px rgba(0,0,0,.45)}
+.project:has(.project-open:focus-visible){outline:2px solid var(--accent);outline-offset:3px}
+.project-tile{position:relative;aspect-ratio:16/10;max-width:100%;overflow:hidden;background:var(--ground-2);border-bottom:1px solid var(--rule)}
+.tile{display:block;width:100%;height:100%;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+img.tile{object-fit:cover}
+.project:hover .project-tile .tile{transform:scale(1.045)}
+.tile-tag{
+  position:absolute;left:10px;bottom:10px;padding:5px 7px;border-radius:3px;
+  font:500 .6rem/1 var(--f-mono);font-stretch:80%;letter-spacing:.05em;color:var(--ink);
+  background:color-mix(in srgb,var(--ground) 82%,transparent);backdrop-filter:blur(4px);
+}
+.project-body{display:flex;flex-direction:column;gap:10px;flex:1;padding:20px 22px 22px;min-width:0}
+.project-meta{display:flex;justify-content:space-between;gap:12px;margin:0;font:500 .62rem/1.3 var(--f-mono);font-stretch:80%;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.project-title{margin:0;font-stretch:112%;font-weight:700;font-size:1.32rem;line-height:1.15;letter-spacing:-.01em}
+.project-role{margin:0;font-size:.85rem;font-weight:500;color:var(--accent)}
+.project-sum{margin:0;font-size:.94rem;line-height:1.55;color:var(--ink-2)}
+.project-impact{margin:4px 0 0;padding-top:12px;border-top:1px dashed var(--rule-2);font-size:.86rem;line-height:1.4;color:var(--ink-2)}
+.project-impact strong{display:block;margin-bottom:2px;font-stretch:125%;font-weight:700;font-size:1.3rem;color:var(--ink);font-variant-numeric:tabular-nums}
+.project-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:4px 0 0;border-top:1px solid var(--rule)}
+.project-facts div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--rule)}
+.project-facts div:nth-child(odd){padding-right:14px;border-right:1px solid var(--rule)}
+.project-facts div:nth-child(even){padding-left:14px}
+.project-facts dt{font:500 .6rem/1.6 var(--f-mono);font-stretch:80%;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.project-facts dd{margin:0;font-size:.88rem;font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
+.stack{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:6px 0 0;padding:0}
+.stack li{font:500 .62rem/1 var(--f-mono);font-stretch:80%;letter-spacing:.03em;padding:6px 8px;border-radius:3px;background:var(--ground-2);color:var(--ink-2)}
+.project-open{
+  margin-top:auto;padding:14px 0 0;align-self:flex-start;border:0;background:none;cursor:pointer;
+  font:600 .86rem/1 var(--f-display);color:var(--ink);
+}
+.project-open::after{content:"";position:absolute;inset:0;z-index:1}
+.project-open:focus-visible{outline:none}
+.project-open .arr{display:inline-block;transition:transform .25s;color:var(--accent)}
+.project:hover .project-open .arr{transform:translateX(4px)}
+.project.is-featured{grid-column:span 2;flex-direction:row}
+.project.is-featured .project-tile{flex:1.05;aspect-ratio:auto;min-height:100%;border-bottom:0;border-right:1px solid var(--rule)}
+.project.is-featured .project-body{flex:1;padding:28px 30px 30px}
+.project.is-featured .project-title{font-size:1.8rem}
+.project.is-featured .project-sum{font-size:1rem}
+.work-status{margin:20px 0 0;font:500 .64rem/1 var(--f-mono);font-stretch:80%;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+@media (max-width:1040px){
+  .projects{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .project.is-featured{flex-direction:column}
+  .project.is-featured .project-tile{aspect-ratio:16/9;border-right:0;border-bottom:1px solid var(--rule);min-height:0}
+}
+@media (max-width:640px){
+  .projects{grid-template-columns:1fr}
+  .project.is-featured{grid-column:auto}
+  .project.is-featured .project-tile{aspect-ratio:4/3}
+  .project.is-featured .project-body{padding:20px 22px 22px}
+  .project.is-featured .project-title{font-size:1.4rem}
+}
+
+/* Coverage map */
+.coverage-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.map-frame{margin:0;overflow-x:clip;padding:clamp(10px,1.4vw,16px);border:1px solid var(--rule-2);border-radius:var(--r);background:var(--ground-2);min-width:0}
+.map{position:relative;min-height:200px}
+.map canvas{display:block;width:100%}
+.map-fallback{display:none;margin:0;padding:60px 20px;text-align:center;color:var(--ink-3);font-size:.9rem}
+.map.is-missing .map-fallback{display:block}
+.pins{position:absolute;inset:0;pointer-events:none}
+.pin{
+  position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;padding:0;border:0;border-radius:50%;
+  background:transparent;cursor:pointer;pointer-events:auto;z-index:2;
+}
+.pin::before{content:"";position:absolute;left:50%;top:50%;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--ground-2),0 0 0 4px var(--accent);transition:transform .2s}
+.pin:hover::before,.pin:focus-visible::before,.pin.is-hot::before{transform:scale(1.35)}
+.pin:focus-visible{outline-offset:0}
+.pin-label{
+  position:absolute;left:50%;bottom:calc(100% + 2px);transform:translate(-50%,4px);opacity:0;pointer-events:none;
+  display:grid;gap:3px;white-space:nowrap;text-align:left;padding:8px 10px;border-radius:4px;
+  background:var(--ink);color:var(--ground);font:600 .78rem/1.1 var(--f-display);transition:opacity .18s,transform .18s;
+  box-shadow:0 10px 24px -10px rgba(0,0,0,.5);
+}
+.pin-label small{font:500 .6rem/1 var(--f-mono);font-stretch:80%;letter-spacing:.06em;opacity:.75}
+.pin.edge-r .pin-label{left:auto;right:-6px;transform:translate(0,4px)}
+.pin.edge-l .pin-label{left:-6px;transform:translate(0,4px)}
+.pin:hover .pin-label,.pin:focus-visible .pin-label,.pin.is-hot .pin-label{opacity:1;transform:translate(-50%,0)}
+.pin.edge-r:hover .pin-label,.pin.edge-r:focus-visible .pin-label,.pin.edge-r.is-hot .pin-label,
+.pin.edge-l:hover .pin-label,.pin.edge-l:focus-visible .pin-label,.pin.edge-l.is-hot .pin-label{transform:none}
+.pin:hover,.pin:focus-visible,.pin.is-hot{z-index:5}
+.home-mark{position:absolute;z-index:1;width:0;height:0;pointer-events:none}
+.home-mark::before{content:"";position:absolute;left:-15px;top:-15px;width:30px;height:30px;border:1.5px solid var(--ink);border-radius:50%}
+.home-mark::after{content:"";position:absolute;left:-3px;top:-3px;width:6px;height:6px;background:var(--ink);border-radius:50%}
+.home-mark span{position:absolute;left:20px;top:-5px;font:600 .6rem/1 var(--f-mono);font-stretch:80%;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);white-space:nowrap;text-shadow:0 0 6px var(--ground-2),0 0 2px var(--ground-2)}
+.inset-label{position:absolute;z-index:1;font:500 .58rem/1 var(--f-mono);font-stretch:78%;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);pointer-events:none;white-space:nowrap}
+.map-collar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;margin-top:12px;padding-top:12px;border-top:1px solid var(--rule);font:500 .6rem/1.3 var(--f-mono);font-stretch:80%;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.map-collar span{display:inline-flex;align-items:center;gap:8px}
+.map-collar .collar-right{margin-left:auto}
+.key{display:inline-block;width:8px;height:8px;border-radius:50%;flex:none}
+.key-served{background:var(--accent)}
+.key-pin{background:var(--accent);box-shadow:0 0 0 2px var(--ground-2),0 0 0 3px var(--accent)}
+.key-home{border:1.5px solid var(--ink);width:10px;height:10px}
+.coverage-aside{display:grid;gap:28px;min-width:0}
+.big-count{margin:0;display:flex;align-items:baseline;gap:12px;font-stretch:125%;font-weight:700;font-size:clamp(3rem,6vw,4.6rem);line-height:.9;letter-spacing:-.02em}
+.big-count small{font:500 .7rem/1.3 var(--f-mono);font-stretch:80%;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);max-width:17ch}
+.country-list{list-style:none;margin:0;padding:0;columns:2;column-gap:24px}
+.country-list li{break-inside:avoid;padding:7px 0;border-bottom:1px solid var(--rule);font-size:.92rem;color:var(--ink-2)}
+.aside-label{margin:0 0 -14px;font:500 .64rem/1 var(--f-mono);font-stretch:80%;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.site-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.site-link{
+  display:flex;justify-content:space-between;align-items:baseline;gap:12px;width:100%;padding:11px 2px;
+  border:0;border-bottom:1px solid var(--rule);background:none;color:var(--ink);cursor:pointer;text-align:left;font:500 .92rem/1.3 var(--f-display);
+}
+.site-link:hover,.site-link.is-hot{color:var(--accent)}
+.site-link span:last-child{font:500 .6rem/1.3 var(--f-mono);font-stretch:80%;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);text-align:right}
+@media (max-width:980px){ .coverage-grid{grid-template-columns:1fr} }
+@media (max-width:640px){
+  .pin{width:22px;height:22px;margin:-11px 0 0 -11px}
+  .pin::before{width:8px;height:8px;margin:-4px 0 0 -4px;box-shadow:0 0 0 2px var(--ground-2),0 0 0 3px var(--accent)}
+  .home-mark::before{left:-11px;top:-11px;width:22px;height:22px}
+  .home-mark span{left:15px}
+}
+
+/* Experience */
+.tl{position:relative;margin-bottom:clamp(36px,5vw,56px);padding:22px 24px 18px;border:1px solid var(--rule);border-radius:var(--r);background:var(--ground-2);overflow-x:auto}
+.tl-inner{position:relative;min-width:600px;display:grid;gap:12px}
+.tl-row{display:grid;grid-template-columns:240px minmax(0,1fr);gap:20px;align-items:center}
+.tl-label{display:grid;gap:3px;font-size:.84rem;font-weight:600;line-height:1.2}
+.tl-label small{font:500 .58rem/1 var(--f-mono);font-stretch:80%;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.tl-track{position:relative;height:12px}
+.tl-bar{position:absolute;top:0;bottom:0;min-width:4px;border-radius:2px;background:var(--ink-3)}
+.tl-bar.is-current,.tl-bar.is-latest{background:var(--accent)}
+.tl-axis{position:relative;height:18px}
+.tl-year{position:absolute;top:0;transform:translateX(-50%);font:500 .6rem/1 var(--f-mono);font-stretch:80%;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.tl-grid{position:absolute;top:0;bottom:22px;left:260px;right:0;pointer-events:none}
+.tl-grid i{position:absolute;top:0;bottom:0;width:1px;background:var(--rule)}
+.roles{list-style:none;margin:0;padding:0}
+.role{display:grid;grid-template-columns:220px minmax(0,1fr);gap:16px 40px;padding-block:34px;border-top:1px solid var(--rule)}
+.role:last-child{border-bottom:1px solid var(--rule)}
+.role-when{display:grid;align-content:start;gap:8px;font:500 .7rem/1.4 var(--f-mono);font-stretch:80%;letter-spacing:.04em;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.role-dur{color:var(--ink-3)}
+.role-main{min-width:0}
+.role h3{margin:0;font-stretch:112%;font-weight:700;font-size:1.4rem;line-height:1.2}
+.role-org{margin:6px 0 16px;font-weight:500;color:var(--accent)}
+.role ul.points{display:grid;gap:10px;margin:0;padding:0;list-style:none;max-width:68ch}
+.points li{position:relative;padding-left:22px;color:var(--ink-2);font-size:.97rem}
+.points li::before{content:"";position:absolute;left:0;top:.8em;width:10px;height:1px;background:var(--ink-3)}
+.role .stack{margin-top:18px}
+@media (max-width:760px){
+  .role{grid-template-columns:1fr}
+  .tl-row{grid-template-columns:170px minmax(0,1fr)}
+  .tl-grid{left:190px}
+  .tl-inner{min-width:520px}
+}
+
+/* Education, licences, awards */
+.two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(36px,6vw,80px)}
+.two-col > div{display:grid;gap:48px;align-content:start;min-width:0}
+.col-head{margin:0 0 18px;font:500 .66rem/1 var(--f-mono);font-stretch:80%;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.entries{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule-2)}
+.entry{display:grid;gap:6px;padding-block:20px;border-bottom:1px solid var(--rule)}
+.entry-when{font:500 .64rem/1.3 var(--f-mono);font-stretch:80%;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.entry h3{margin:0;font-size:1.08rem;font-weight:600;font-stretch:108%;line-height:1.3}
+.entry-org{margin:0;font-size:.92rem;color:var(--ink-2)}
+.entry-note{margin:4px 0 0;font-size:.92rem;color:var(--ink-2);max-width:56ch}
+.entries.compact .entry{grid-template-columns:56px minmax(0,1fr);align-items:baseline;gap:4px 16px;padding-block:13px}
+.entries.compact .entry h3{font-size:.98rem;font-weight:500;font-stretch:100%}
+@media (max-width:820px){ .two-col{grid-template-columns:1fr} }
+
+/* Contact */
+.contact{background:var(--ground-2);border-top:1px solid var(--rule)}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(40px,6vw,96px);align-items:start}
+.contact-copy{display:grid;gap:26px;min-width:0}
+.contact-title{margin:0;font-stretch:122%;font-weight:800;font-size:clamp(2.4rem,5.6vw,4.6rem);line-height:.98;letter-spacing:-.025em;max-width:13ch}
+.contact-title em{font-family:var(--f-serif);font-style:italic;font-weight:400;font-stretch:100%;letter-spacing:-.01em;color:var(--accent)}
+.contact-lead{margin:0;max-width:46ch;color:var(--ink-2)}
+.email-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;padding-block:20px;border-block:1px solid var(--rule-2)}
+.email-text{font-stretch:112%;font-weight:600;font-size:clamp(1.15rem,2.4vw,1.75rem);letter-spacing:-.01em;user-select:all;overflow-wrap:anywhere;min-width:0}
+.copy-btn{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 12px;border-radius:var(--r);border:1px solid var(--rule-2);background:transparent;color:var(--ink-2);cursor:pointer;font:500 .64rem/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase}
+.copy-btn:hover{color:var(--ink);border-color:var(--ink-3)}
+.copy-btn[data-state="copied"]{color:var(--accent);border-color:var(--accent)}
+.channels{display:grid;margin:0}
+.channels > div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;padding-block:12px;border-bottom:1px solid var(--rule)}
+.channels dt{font:500 .64rem/1.7 var(--f-mono);font-stretch:80%;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.channels dd{margin:0;font-size:.95rem}
+.socials{display:flex;gap:8px}
+.socials a{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:var(--r);border:1px solid var(--rule-2);color:var(--ink-2);transition:all .2s}
+.socials a:hover{color:var(--accent);border-color:var(--accent)}
+.socials svg{width:18px;height:18px}
+.form-card{display:grid;gap:18px;padding:clamp(22px,3vw,34px);border:1px solid var(--rule-2);border-radius:var(--r);background:var(--panel);min-width:0}
+.form-card h3{margin:0;font-stretch:112%;font-size:1.2rem}
+.field{display:grid;gap:8px}
+.field label{font:500 .64rem/1 var(--f-mono);font-stretch:80%;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.field input,.field select,.field textarea{
+  width:100%;padding:13px 14px;border-radius:var(--r);border:1px solid var(--rule-2);background:var(--ground);color:var(--ink);
+  font:400 1rem/1.4 var(--f-display);transition:border-color .2s,box-shadow .2s;
+}
+.field textarea{resize:vertical;min-height:130px}
+.field input::placeholder,.field textarea::placeholder{color:var(--ink-3)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-wash)}
+.field-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.form-status{margin:0;min-height:1.4em;font-size:.88rem;color:var(--ink-2)}
+.form-status[data-tone="ok"]{color:var(--accent)}
+.form-card .btn{width:100%}
+@media (max-width:900px){ .contact-grid{grid-template-columns:1fr} }
+@media (max-width:520px){ .field-row{grid-template-columns:1fr} }
+
+/* Project register */
+.register{margin-top:clamp(56px,7vw,88px)}
+.register-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px 32px;margin-bottom:18px}
+.register-head .col-head{margin-bottom:8px}
+.register-note{margin:0;max-width:52ch;font-size:.92rem;color:var(--ink-2)}
+.register-count{margin:0;font:500 .64rem/1 var(--f-mono);font-stretch:80%;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.register-count span{font:700 1.5rem/1 var(--f-display);font-stretch:125%;letter-spacing:0;color:var(--ink);margin-right:4px}
+.reg-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule-2)}
+.reg-row{display:grid;grid-template-columns:118px minmax(170px,1fr) minmax(0,2.1fr) 150px;gap:6px 24px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--rule)}
+.reg-list.is-collapsed .reg-row:nth-child(n+9){display:none}
+.reg-when{font:500 .66rem/1.4 var(--f-mono);font-stretch:80%;letter-spacing:.04em;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.reg-site{display:grid;gap:2px;min-width:0}
+.reg-site strong{font-weight:600;font-size:.95rem;line-height:1.3}
+.reg-site span{font-size:.8rem;color:var(--ink-3)}
+.reg-work{margin:0;font-size:.9rem;line-height:1.5;color:var(--ink-2);min-width:0}
+.reg-tag{justify-self:end;font:500 .6rem/1.3 var(--f-mono);font-stretch:80%;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);text-align:right}
+.reg-case{justify-self:end;padding:0;border:0;background:none;cursor:pointer;font:600 .82rem/1.3 var(--f-display);color:var(--accent);white-space:nowrap}
+.reg-case:hover{text-decoration:underline;text-underline-offset:3px}
+.reg-more{margin-top:20px}
+@media (max-width:900px){
+  .reg-row{grid-template-columns:110px minmax(0,1fr);gap:6px 18px}
+  .reg-work{grid-column:2}
+  .reg-tag,.reg-case{grid-column:2;justify-self:start;text-align:left}
+}
+@media (max-width:520px){
+  .reg-row{grid-template-columns:1fr}
+  .reg-work,.reg-tag,.reg-case{grid-column:1}
+}
+
+/* WIL training chart */
+.wil{position:relative;margin:0 0 clamp(48px,6vw,72px);padding:clamp(20px,3vw,32px);border:1px solid var(--rule-2);border-radius:var(--r);background:var(--ground-2)}
+.wil-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 32px;margin-bottom:22px}
+.wil-intro{display:grid;gap:12px}
+.wil-intro .col-head{margin:0}
+.wil-total{margin:0;display:flex;align-items:baseline;gap:14px}
+.wil-total span{font-stretch:125%;font-weight:700;font-size:clamp(2.6rem,5vw,3.6rem);line-height:.9;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.wil-total small{font:500 .66rem/1.4 var(--f-mono);font-stretch:80%;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);max-width:28ch}
+.wil-key{margin:0;display:flex;flex-wrap:wrap;gap:8px 20px;font:500 .62rem/1 var(--f-mono);font-stretch:80%;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.wil-key span{display:inline-flex;align-items:center;gap:8px}
+.wil-key-bar{display:inline-block;width:20px;height:10px;border-radius:0 4px 4px 0;background:var(--bar)}
+.wil-key-min{display:inline-block;width:2px;height:16px;background:var(--ink)}
+.wil-scroll{overflow-x:auto}
+.wil-table{width:100%;min-width:520px;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.wil-table th[scope="row"]{width:36%;padding:7px 18px 7px 0;text-align:left;font-weight:500;font-size:.88rem;line-height:1.3;color:var(--ink-2)}
+.wil-group th{padding:18px 0 6px;text-align:left;font:500 .62rem/1 var(--f-mono);font-stretch:80%;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.wil-group:first-child th{padding-top:0}
+.wil-cell{padding:7px 0}
+.wil-track{position:relative;display:block;height:12px;background:repeating-linear-gradient(90deg,var(--rule) 0 1px,transparent 1px 20%)}
+.wil-fill{position:absolute;left:0;top:0;bottom:0;border-radius:0 4px 4px 0;background:var(--bar);transition:filter .15s}
+.wil-min{position:absolute;top:-4px;bottom:-4px;width:2px;margin-left:-1px;background:var(--ink);box-shadow:0 0 0 2px var(--ground-2)}
+.wil-val{width:76px;padding:7px 0 7px 16px;text-align:right;font:600 .78rem/1 var(--f-mono);font-stretch:85%;color:var(--ink);white-space:nowrap}
+.wil-val small{font-weight:400;color:var(--ink-3)}
+.wil-row{cursor:default}
+.wil-row:hover th[scope="row"]{color:var(--ink)}
+.wil-row:hover .wil-fill{filter:brightness(1.12)}
+.wil-axis .wil-cell{padding-top:10px}
+.wil-ticks{position:relative;display:block;height:12px;font:500 .58rem/1 var(--f-mono);font-stretch:80%;color:var(--ink-3)}
+.wil-ticks span{position:absolute;top:0;transform:translateX(-50%);white-space:nowrap}
+.wil-ticks span:first-child{transform:none}
+.wil-ticks span:last-child{transform:translateX(-100%)}
+.wil-cap{margin-top:16px;font:500 .6rem/1.5 var(--f-mono);font-stretch:80%;letter-spacing:.04em;color:var(--ink-3)}
+.wil-tip{position:absolute;z-index:3;pointer-events:none;padding:8px 10px;border-radius:4px;background:var(--ink);color:var(--ground);font:500 .78rem/1.35 var(--f-display);box-shadow:0 10px 24px -10px rgba(0,0,0,.5);white-space:nowrap}
+.wil-tip b{font-weight:700}
+@media (max-width:640px){
+  .wil-table,.wil-table tbody{display:block;min-width:0}
+  .wil-row,.wil-axis{display:grid;grid-template-columns:minmax(0,1fr) 84px;align-items:center}
+  .wil-group{display:block}
+  .wil-group th{display:block}
+  .wil-table .wil-row th[scope="row"]{grid-column:1 / -1;width:auto;padding:8px 0 4px;font-size:.84rem}
+  .wil-row .wil-cell{padding:2px 0 8px}
+  .wil-row .wil-val{width:auto;padding:2px 0 8px 10px}
+  .wil-axis td:first-child{display:none}
+}
+
+/* Footer */
+.site-foot{border-top:1px solid var(--rule);background:var(--ground)}
+.foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px 28px;padding-block:26px;font:500 .64rem/1.4 var(--f-mono);font-stretch:80%;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.foot-row a{text-decoration:none;color:var(--ink-2)}
+.foot-row a:hover{color:var(--accent)}
+
+/* Case study dialog */
+.case{
+  width:min(900px,calc(100vw - 32px));max-height:calc(100dvh - 40px);padding:0;
+  border:1px solid var(--rule-2);border-radius:8px;background:var(--panel);color:var(--ink);overflow:auto;overscroll-behavior:contain;
+}
+.case[open]{animation:pop .35s cubic-bezier(.2,.75,.1,1)}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
+.case::backdrop{background:rgba(4,8,7,.66);backdrop-filter:blur(5px)}
+.case-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:flex-start;gap:20px;padding:22px clamp(20px,3vw,34px);background:var(--panel);border-bottom:1px solid var(--rule)}
+.case-head > div{display:grid;gap:12px;min-width:0}
+.case-head h2{margin:0;font-stretch:118%;font-weight:700;font-size:clamp(1.6rem,3.4vw,2.4rem);line-height:1.05;letter-spacing:-.015em}
+.case-tile{position:relative;aspect-ratio:21/9;max-width:100%;overflow:hidden;background:var(--ground-2);border-bottom:1px solid var(--rule)}
+.case-tile .tile{position:absolute;inset:0}
+.case-content{display:grid;gap:28px;padding:clamp(22px,3vw,34px)}
+.case-meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin:0;padding-bottom:24px;border-bottom:1px solid var(--rule)}
+.case-meta div{display:grid;gap:6px;align-content:start;min-width:0}
+.case-meta dt{font:500 .6rem/1 var(--f-mono);font-stretch:80%;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.case-meta dd{margin:0;font-size:.9rem;line-height:1.4}
+.case-meta .meta-wide{grid-column:1 / -1}
+.case-body{display:grid;gap:10px;max-width:66ch}
+.case-body h3{margin:16px 0 0;font:500 .66rem/1 var(--f-mono);font-stretch:80%;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.case-body h3:first-child{margin-top:0}
+.case-body p{margin:0;color:var(--ink-2)}
+.case-body ul{margin:0;padding-left:18px;color:var(--ink-2);display:grid;gap:6px}
+.case-body figure{margin:10px 0 4px;display:grid;gap:8px}
+.case-body figure img{display:block;width:100%;height:auto;border-radius:4px;border:1px solid var(--rule)}
+.case-body figcaption{font:500 .62rem/1.5 var(--f-mono);font-stretch:80%;letter-spacing:.04em;color:var(--ink-3)}
+.case-foot{display:flex;justify-content:space-between;gap:12px;padding:16px clamp(20px,3vw,34px) 22px;border-top:1px solid var(--rule)}
+.case-foot button{display:grid;gap:4px;max-width:48%;padding:0;border:0;background:none;color:var(--ink);cursor:pointer;text-align:left;font:600 .92rem/1.2 var(--f-display)}
+.case-foot button:last-child{text-align:right}
+.case-foot small{font:500 .58rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.case-foot button:hover{color:var(--accent)}
+@media (max-width:640px){ .case-meta{grid-template-columns:repeat(2,minmax(0,1fr))} }
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head" id="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="#main" aria-label="Daniel Njoroge, back to top">
+      <svg class="brand-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><ellipse cx="16" cy="17" rx="13" ry="10.5"/><ellipse cx="17.5" cy="15.5" rx="7.5" ry="5.8"/><circle cx="18.6" cy="14.6" r="1.9" fill="currentColor"/></svg>
+      <span class="brand-name">Daniel Njoroge</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#toolbox">Toolbox</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#coverage">Coverage</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+      </ul>
+    </nav>
+    <div class="head-actions">
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch theme">
+        <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+        <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <a class="btn btn-solid btn-sm" href="#contact">Contact</a>
+      <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile" hidden>
+    <ul>
+      <li><a href="#about">About <span>Who I am</span></a></li>
+      <li><a href="#toolbox">Toolbox <span>Software &amp; kit</span></a></li>
+      <li><a href="#work">Work <span>8 projects</span></a></li>
+      <li><a href="#coverage">Coverage <span>Map</span></a></li>
+      <li><a href="#experience">Experience <span>Roles</span></a></li>
+      <li><a href="#education">Education <span>Licences</span></a></li>
+      <li><a href="#contact">Contact <span>Get in touch</span></a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+  <!-- HERO: live contour field framed by real coordinates around Johannesburg (see SITE.home in the script). -->
+  <section class="hero" id="home" aria-labelledby="hero-title">
+    <canvas id="terrain" aria-hidden="true"></canvas>
+    <div class="hero-veil" aria-hidden="true"></div>
+    <div class="neatline" aria-hidden="true"><div id="ticks"></div></div>
+
+    <div class="wrap hero-inner">
+      <p class="hero-status"><span class="status-dot" aria-hidden="true"></span>Available now for freelance and project work</p>
+      <h1 class="hero-name" id="hero-title"><span class="ln"><span>Daniel</span></span><span class="ln"><span>Njoroge</span></span></h1>
+      <p class="hero-role">Geomatics engineer · GIS analyst · Drone pilot</p>
+      <p class="hero-lead">I capture and analyse spatial data in hard places: drone-borne radar over Antarctic ice, laser scans of buildings, satellite imagery for due diligence. Then I turn it into <em>maps and data people can use.</em></p>
+      <div class="hero-cta">
+        <a class="btn btn-solid" href="#work">See selected work <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-line" href="#contact">Get in touch</a>
+      </div>
+    </div>
+
+    <div class="wrap hero-collar">
+      <dl class="collar-stats">
+        <div><dt>UAV radar lines flown over Antarctic ice</dt><dd>47.2 km</dd></div>
+        <div><dt>Trees mapped from airborne LiDAR</dt><dd>435</dd></div>
+        <div><dt>Farm portions in one due-diligence viewer</dt><dd>62</dd></div>
+      </dl>
+      <p class="collar-readout" aria-hidden="true">
+        <span><b>Cursor</b><span id="ro-coord">26°12′15″S 28°02′50″E</span></span>
+        <span><b>Elev.</b><span id="ro-elev">1,753 m</span></span>
+      </p>
+      <div class="collar-scale" aria-hidden="true">
+        <div class="scalebar">
+          <svg id="scalebar-svg" width="76" height="6"></svg>
+          <div class="scalebar-labels"><span>0</span><span>1</span><span>2 km</span></div>
+        </div>
+        <span class="scalebar-meta">Contour interval <span id="ci">25</span> m<br>Hartebeesthoek94</span>
+        <svg class="north" viewBox="0 0 22 34" aria-hidden="true"><path d="M11 2 L18 24 L11 19 L4 24 Z" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M11 2 L11 19 L4 24 Z" fill="currentColor"/><text x="11" y="33" text-anchor="middle" font-size="8" font-family="Martian Mono, monospace" fill="currentColor">N</text></svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="sectors" aria-label="Organisations I've worked with">
+    <div class="wrap sectors-row">
+      <p class="sectors-label">Worked with</p>
+      <ul class="sector-list">
+        <li>SANAP · SANAE 65</li>
+        <li>National Geo-spatial Information</li>
+        <li>5D Geo</li>
+        <li>University of Cape Town</li>
+        <li>Friedlander, Burger &amp; Volkmann</li>
+        <li>Pinnacle Geomatics</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow">About</p>
+        <h2 class="sec-title" id="about-title">I go where the data is hard to get, and bring back something people can use.</h2>
+      </header>
+      <div class="about-grid">
+        <div class="about-copy">
+          <p class="lead">I'm a Kenyan geomatics engineer based in Johannesburg, finishing an MScEng in Geomatics at <em>the University of Cape Town.</em></p>
+          <p>I have more than five years of academic, internship and project experience, and my work runs from field capture to the final deliverable. I've flown drone-mounted ground-penetrating radar over the Fimbul Ice Shelf in Antarctica, scanned campus gates, high-rises and homes with terrestrial and SLAM laser scanners, mapped Robben Island at 1:10 000, and analysed change at a mine site in Google Earth Engine.</p>
+          <p>I studied Geomatics with Computer Science, so I write the code between the sensor and the map: Python pipelines for radar traces and survey data, LISP routines for BIM workflows, and web viewers that carry an analysis to the people reading it. I've logged 224 days of Work-Integrated Learning toward registration as a Professional GISc Practitioner, and I've studied and worked in Botswana and South Africa.</p>
+          <ul class="principles">
+            <li><h3>Field to deliverable</h3><p>I capture data and process it myself, from raw GPR, LiDAR and photogrammetric data through to survey deliverables.</p></li>
+            <li><h3>Works without supervision</h3><p>I planned and ran my own survey campaign during a three-month season in Antarctica, with very limited outside support.</p></li>
+            <li><h3>Automate the repeat work</h3><p>I extended 5D Geo's TerraScan classification macros and automate repeat CAD and GIS tasks with LISP and Python.</p></li>
+          </ul>
+        </div>
+        <aside class="about-card" aria-label="Quick facts">
+          <figure class="portrait">
+            <!-- To use a photo of yourself: replace the canvas and monogram with <img src="assets/portrait.jpg" alt="Daniel Njoroge"> -->
+            <canvas class="tile" data-tile="hyps" data-seed="5" aria-hidden="true"></canvas>
+            <span class="monogram" aria-hidden="true">DN</span>
+            <figcaption><span>Johannesburg</span><span id="home-dms">26°12′S 28°03′E</span></figcaption>
+          </figure>
+          <dl class="facts">
+            <div><dt>Based in</dt><dd>Randburg, Johannesburg</dd></div>
+            <div><dt>Nationality</dt><dd>Kenyan</dd></div>
+            <div><dt>Languages</dt><dd>English (fluent), French (basic)</dd></div>
+            <div><dt>Pilot</dt><dd>SACAA Remote Pilot Certificate (VLOS)</dd></div>
+            <div><dt>Registered</dt><dd>Candidate GISc Practitioner (SAGC) · Registered Professional (Botswana Institute of Geomatics)</dd></div>
+            <div><dt>Open to</dt><dd>Freelance and project work, remote field sites, cross-border travel</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLBOX -->
+  <section class="section" id="toolbox" aria-labelledby="toolbox-title">
+    <div class="wrap">
+      <header class="sec-head sec-head-split">
+        <div>
+          <p class="eyebrow">Toolbox</p>
+          <h2 class="sec-title" id="toolbox-title">From field capture to deliverable</h2>
+        </div>
+        <p class="sec-note">Ordered like a map's layer list: deliverables at the top, field capture at the bottom. The swatches follow the same order, from high ground to low.</p>
+      </header>
+      <div class="layers-head" aria-hidden="true"><span></span><span>Layer</span><span>Tools</span></div>
+      <ul class="layers">
+        <li class="layer" style="--sw:var(--hyp-1)"><span class="swatch" aria-hidden="true"></span><div class="layer-name"><h3>Web maps &amp; viewers</h3><span class="count"></span></div>
+          <ul class="chips"><li>Leaflet</li><li>JavaScript</li><li>HTML &amp; CSS</li><li>GitHub Pages</li><li>React Native</li><li>Static web GIS viewers</li></ul></li>
+        <li class="layer" style="--sw:var(--hyp-2)"><span class="swatch" aria-hidden="true"></span><div class="layer-name"><h3>CAD, drafting &amp; BIM</h3><span class="count"></span></div>
+          <ul class="chips"><li>AutoCAD</li><li>BricsCAD + LISP</li><li>BIM workflows</li><li>Bentley MicroStation</li><li>Bentley Map</li></ul></li>
+        <li class="layer" style="--sw:var(--hyp-3)"><span class="swatch" aria-hidden="true"></span><div class="layer-name"><h3>GIS &amp; spatial analysis</h3><span class="count"></span></div>
+          <ul class="chips"><li>ArcGIS Pro</li><li>QGIS</li><li>Global Mapper</li><li>SQL</li><li>Network analysis</li><li>Hotspot mapping</li><li>IDW &amp; Kriging</li><li>Topology validation</li></ul></li>
+        <li class="layer" style="--sw:var(--hyp-4)"><span class="swatch" aria-hidden="true"></span><div class="layer-name"><h3>Code &amp; data</h3><span class="count"></span></div>
+          <ul class="chips"><li>Python</li><li>rasterio</li><li>GDAL / OGR</li><li>NumPy</li><li>SciPy</li><li>scikit-learn</li><li>openpyxl</li><li>segyio</li><li>PDAL</li><li>R</li><li>Java</li></ul></li>
+        <li class="layer" style="--sw:var(--hyp-5)"><span class="swatch" aria-hidden="true"></span><div class="layer-name"><h3>Remote sensing</h3><span class="count"></span></div>
+          <ul class="chips"><li>Google Earth Engine</li><li>Change analysis</li><li>NDVI · MSAVI · red-edge NDVI</li><li>Radiometric correction</li><li>Orthomosaics</li><li>Watershed segmentation</li></ul></li>
+        <li class="layer" style="--sw:var(--hyp-6)"><span class="swatch" aria-hidden="true"></span><div class="layer-name"><h3>Point clouds &amp; photogrammetry</h3><span class="count"></span></div>
+          <ul class="chips"><li>Leica Cyclone</li><li>Terrasolid TerraScan</li><li>TerraModeler</li><li>Agisoft Metashape</li><li>Pix4D</li><li>FJD Trion Model</li><li>Trimble Business Centre</li></ul></li>
+        <li class="layer" style="--sw:var(--hyp-7)"><span class="swatch" aria-hidden="true"></span><div class="layer-name"><h3>Field capture</h3><span class="count"></span></div>
+          <ul class="chips"><li>DJI Matrice 350 RTK</li><li>DJI D-RTK 2</li><li>UgCS + True Terrain Following</li><li>Zond Aero GPR</li><li>Leica RTC360</li><li>Leica BLK360</li><li>FJD Trion S2 (SLAM)</li><li>Garmin GPS</li></ul></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- WORK: data-lat / data-lon place a pin on the coverage map. data-approx means the pin sits in the region, not on the exact site. -->
+  <section class="section" id="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <header class="sec-head sec-head-split">
+        <div>
+          <p class="eyebrow">Selected work</p>
+          <h2 class="sec-title" id="work-title">Projects</h2>
+        </div>
+        <div class="filters" role="group" aria-label="Filter projects">
+          <button class="filter" type="button" data-filter="all" aria-pressed="true">All <span class="n"></span></button>
+          <button class="filter" type="button" data-filter="uav" aria-pressed="false">UAV survey <span class="n"></span></button>
+          <button class="filter" type="button" data-filter="lidar" aria-pressed="false">LiDAR &amp; scanning <span class="n"></span></button>
+          <button class="filter" type="button" data-filter="rs" aria-pressed="false">Remote sensing <span class="n"></span></button>
+          <button class="filter" type="button" data-filter="gis" aria-pressed="false">GIS &amp; web <span class="n"></span></button>
+        </div>
+      </header>
+
+      <div class="projects" id="projects">
+        <article class="project is-featured" id="p-gpr" data-cat="uav" data-lat="-70.3" data-lon="-1.5" data-approx data-place="Fimbul Ice Shelf, Antarctica" data-client="MScEng Geomatics, University of Cape Town, with SANAP (SANAE 65)">
+          <div class="project-tile"><img class="tile" src="assets/fimbul-gpr-flight.jpg" alt="DJI Matrice 350 RTK carrying the GPR payload in low-level flight over the Fimbul Ice Shelf" style="object-position:55% 60%"><span class="tile-tag"></span></div>
+          <div class="project-body">
+            <p class="project-meta"><span>UAV survey · Geophysics</span><span>2026</span></p>
+            <h3 class="project-title">Crevasse detection with drone-borne radar</h3>
+            <p class="project-role">Pilot in command · Researcher</p>
+            <p class="project-sum">Drone-mounted ground-penetrating radar surveys on the Fimbul Ice Shelf to detect hidden crevasses. I ran the campaign from equipment checks in Cape Town to flights on the ice.</p>
+            <p class="project-impact"><strong>47.2 line-km</strong>of radar profiles over four survey flights</p>
+            <dl class="project-facts">
+              <div><dt>Platform</dt><dd>DJI M350 RTK</dd></div>
+              <div><dt>Payload</dt><dd>Zond Aero GPR</dd></div>
+              <div><dt>Lines</dt><dd>200 / 25 m</dd></div>
+              <div><dt>Height</dt><dd>3.3–4.8 m AGL</dd></div>
+            </dl>
+            <ul class="stack"><li>UgCS</li><li>True Terrain Following</li><li>DJI D-RTK 2</li><li>ArcGIS</li><li>Python</li><li>EPSG:3031</li></ul>
+            <button class="project-open" type="button">Read case study <span class="arr" aria-hidden="true">→</span></button>
+          </div>
+          <template>
+            <h3>Context</h3>
+            <p>My MScEng thesis, supervised by Dr Moreblessing Shoko, develops automated detection of hidden crevasses in ground-penetrating radar data. I collected the data myself as a member of the SANAE 65 expedition with the South African National Antarctic Programme.</p>
+            <h3>Preparation · Nov – Dec 2025</h3>
+            <ul>
+              <li>Ran full equipment-readiness checks, and verified the drone and GPR payload were serviced and calibrated to spec, including test-flight data collection.</li>
+              <li>Wrote standard operating procedures for drone flight operations, and designed and issued data logbooks to every team to standardise field logging.</li>
+              <li>Prepared the GIS data loaded onto Garmin GPS units, so camps were placed clear of hazards and travel routes reached the areas of interest.</li>
+              <li>Designed survey lines in Antarctic Polar Stereographic (EPSG:3031), converted them to KML for UgCS, and worked with SPH Engineering on coordinate compatibility and trace-spacing calibration.</li>
+            </ul>
+            <figure><img src="assets/ugcs-test-plan.jpg" alt="UgCS area scan plan for the Matrice 350 RTK test flight at Contermanskloof" loading="lazy"><figcaption>Pre-deployment test flight at Contermanskloof, Cape Town, 14 November 2025: UgCS area scan at 3 m and 5 m/s, 5 m line spacing, rangefinder altitude mode.</figcaption></figure>
+            <h3>On the ice · Jan – Feb 2026</h3>
+            <ul>
+              <li>Managed the project's ArcGIS environment, integrating data from several sources, and produced planning maps to allocate tasks across teams and support other members' thesis research.</li>
+              <li>Ran weekly coordination meetings across all teams on progress, logistics and equipment.</li>
+              <li>Flew four survey flights between 22 January and 4 February 2026 with a DJI Matrice 350 RTK carrying a Zond Aero GPR (100 and 150 MHz), UgCS SkyHub logging and a radar altimeter, on a D-RTK 2 base station. That gave two wide grids at 200 m line spacing and two tight grids at 25 m, flown with True Terrain Following at 3.3 to 4.8 m above the ice.</li>
+              <li>Worked in extreme cold, wind and whiteout risk with very limited outside support.</li>
+            </ul>
+            <figure><img src="assets/gpr-rig.jpg" alt="Matrice 350 RTK with the orange GPR payload mounted under the airframe" loading="lazy"><figcaption>The survey rig: Matrice 350 RTK with the GPR payload (orange) under the airframe.</figcaption></figure>
+            <h3>Processing</h3>
+            <ul>
+              <li>Built a Python pipeline for the radar data: dewow, time-zero correction, background removal, bandpass filtering, gain (SEC/AGC) and time-to-depth conversion.</li>
+              <li>Georeferenced every radar trace by joining the SkyHub WGS84 position log to the SEG-Y trace record.</li>
+            </ul>
+            <h3>Outcome</h3>
+            <p>47.2 line-km of georeferenced radar profiles across the survey grids. Automated crevasse detection is the subject of my MSc, which is in progress.</p>
+          </template>
+        </article>
+
+        <article class="project" id="p-tenure" data-cat="gis" data-lat="-28.7" data-lon="30.6" data-approx data-place="KwaZulu-Natal, South Africa" data-client="Mining-right due diligence at 5D Geo">
+          <div class="project-tile"><canvas class="tile" data-tile="parcels" data-seed="73" aria-hidden="true"></canvas><span class="tile-tag"></span></div>
+          <div class="project-body">
+            <p class="project-meta"><span>GIS · Web mapping</span><span>2026</span></p>
+            <h3 class="project-title">Land-tenure due diligence for a mining right</h3>
+            <p class="project-role">GIS analyst &amp; developer</p>
+            <p class="project-sum">A tenure database and a live web GIS viewer that answer due-diligence trigger questions, portion by portion, for farms inside and around a mining right.</p>
+            <p class="project-impact"><strong>62</strong>farm portions mapped and flagged in one viewer</p>
+            <ul class="stack"><li>GIS database</li><li>Leaflet</li><li>GitHub Pages</li><li>Surveyor-General data</li></ul>
+            <button class="project-open" type="button">Read case study <span class="arr" aria-hidden="true">→</span></button>
+          </div>
+          <template>
+            <h3>Context</h3>
+            <p>A due-diligence assessment under IPILRA (the Interim Protection of Informal Land Rights Act) for farm portions inside and next to a mining right in KwaZulu-Natal. Each portion has to answer a checklist of trigger questions, for example about informal occupation, graves, historical trust or state ownership, and customary rights.</p>
+            <h3>What I did</h3>
+            <ul>
+              <li>Helped get the project off the ground: put together the first GIS database schema linking farm portions, title deeds and subdivision history, and worked on the initial project plan and proposal (feasibility, risk register, requirements) that went to the client.</li>
+              <li>Ran queries on the farm-portion database to answer the trigger questions.</li>
+              <li>Built and launched a web GIS viewer in Leaflet, hosted on GitHub Pages over a satellite basemap, with trigger-question layers, year highlighting and per-portion information with a Surveyor-General data lookup.</li>
+              <li>Flagged occupation, cultivation, graveyards and community claims on each portion, and checked the trigger-question maps against the property lists.</li>
+            </ul>
+          </template>
+        </article>
+
+        <article class="project" id="p-trees" data-cat="lidar rs" data-lat="-2.3" data-lon="34.8" data-approx data-place="Pungume Island &amp; Serengeti, Tanzania" data-client="Lodge developments, processed at 5D Geo">
+          <div class="project-tile"><canvas class="tile" data-tile="trees" data-seed="41" aria-hidden="true"></canvas><span class="tile-tag"></span></div>
+          <div class="project-body">
+            <p class="project-meta"><span>LiDAR · Remote sensing</span><span>2026</span></p>
+            <h3 class="project-title">Tree inventory for two lodge sites</h3>
+            <p class="project-role">Point-cloud &amp; raster analysis</p>
+            <p class="project-sum">Position, height and crown radius for every tree on two lodge sites in Tanzania, from drone LiDAR and photogrammetry.</p>
+            <p class="project-impact"><strong>435</strong>trees with positions, heights and crown radii</p>
+            <ul class="stack"><li>TerraScan</li><li>Orthophoto</li><li>DTM / DSM</li><li>Python</li><li>Watershed segmentation</li></ul>
+            <button class="project-open" type="button">Read case study <span class="arr" aria-hidden="true">→</span></button>
+          </div>
+          <template>
+            <h3>Context</h3>
+            <p>Two lodge sites in Tanzania were mapped from the air with drone LiDAR and photogrammetry: Pungume Island (about 2.4 km²) and a site in the Serengeti (about 2 km²). This was desk work on data captured by others.</p>
+            <h3>Method</h3>
+            <ul>
+              <li>Classified the airborne LiDAR in TerraScan.</li>
+              <li>Digitised individual trees as points on the orthophoto.</li>
+              <li>Overlaid the points on the DTM and DSM to read ground and crown elevations, then subtracted them to get each tree's height.</li>
+              <li>Ran a watershed segmentation algorithm in Python to estimate each crown's radius.</li>
+            </ul>
+            <h3>Outcome</h3>
+            <p>Position, height and approximate crown radius for 435 trees.</p>
+          </template>
+        </article>
+
+        <article class="project" id="p-routes" data-cat="gis" data-place="Observatory to Claremont, Cape Town" data-client="Work-Integrated Learning task">
+          <div class="project-tile"><canvas class="tile" data-tile="routes" data-seed="12" aria-hidden="true"></canvas><span class="tile-tag"></span></div>
+          <div class="project-body">
+            <p class="project-meta"><span>Fieldwork · Spatial analysis</span><span>2025</span></p>
+            <h3 class="project-title">Safest routes to campus</h3>
+            <p class="project-role">Field survey &amp; spatial analysis</p>
+            <p class="project-sum">A safety assessment of the Main Road corridor to UCT, scored stop by stop on foot and combined into a Route Safety Index.</p>
+            <p class="project-impact"><strong>4 suburbs</strong>surveyed on foot with a handheld GPS</p>
+            <ul class="stack"><li>Handheld GPS</li><li>Geodatabase</li><li>Buffers</li><li>Hotspot mapping</li><li>Network analysis</li></ul>
+            <button class="project-open" type="button">Read case study <span class="arr" aria-hidden="true">→</span></button>
+          </div>
+          <template>
+            <h3>Context</h3>
+            <p>A Work-Integrated Learning task from August to October 2025. The study area was the Main Road corridor through Observatory, Rosebank, Rondebosch and Claremont, plus the side streets up to UCT's Upper and Lower Campus.</p>
+            <h3>What I did</h3>
+            <ul>
+              <li>Walked the corridor with a handheld GPS and logged every bus stop, taxi stop and security booth, scoring condition, lighting and how close hazards were.</li>
+              <li>Built a geodatabase from the survey and ran 100 m buffers around the transport nodes.</li>
+              <li>Combined the scores into a Route Safety Index, ran hotspot mapping to find the worst-served and highest-risk stops, and used network analysis to work out the safest routes.</li>
+            </ul>
+            <h3>Outputs</h3>
+            <p>Maps of transport and safety infrastructure, the Route Safety Index, and priority upgrades.</p>
+          </template>
+        </article>
+
+        <article class="project" id="p-robben" data-cat="gis" data-lat="-33.806" data-lon="18.366" data-place="Robben Island, Cape Town" data-client="Work-Integrated Learning task">
+          <div class="project-tile"><canvas class="tile" data-tile="island" data-seed="33" aria-hidden="true"></canvas><span class="tile-tag"></span></div>
+          <div class="project-body">
+            <p class="project-meta"><span>Cartography</span><span>2025</span></p>
+            <h3 class="project-title">Robben Island topographic map</h3>
+            <p class="project-role">Cartographer</p>
+            <p class="project-sum">A 1:10 000 topographic map of Robben Island in the style of the national 1:50 000 series, built from the latest orthoimagery.</p>
+            <p class="project-impact"><strong>1:10 000</strong>print-ready map plus an online web map</p>
+            <ul class="stack"><li>Orthoimagery</li><li>CD:NGI data</li><li>Feature classes</li><li>Web map</li></ul>
+            <button class="project-open" type="button">Read case study <span class="arr" aria-hidden="true">→</span></button>
+          </div>
+          <template>
+            <h3>Context</h3>
+            <p>A Work-Integrated Learning task in July 2025: compile a 1:10 000 topographic map of Robben Island in the style of CD:NGI's 1:50 000 series.</p>
+            <h3>What I did</h3>
+            <ul>
+              <li>Built the feature classes from the latest orthoimagery and CD:NGI portal data.</li>
+              <li>Digitised and classified the coastline, coastal rocks, beach, roads by class, buildings, vegetation and points of interest.</li>
+              <li>Delivered a print-ready PDF map and an online web map.</li>
+            </ul>
+          </template>
+        </article>
+
+        <article class="project" id="p-vines" data-cat="uav rs" data-lat="40.42" data-lon="-8.45" data-approx data-place="Bairrada, Portugal" data-client="BSc Geomatics thesis, University of Cape Town">
+          <div class="project-tile"><img class="tile" src="assets/vineyard-rendvi-field.jpg" alt="Red-edge NDVI map of the Quinta de Baixo vineyard" style="object-position:50% 55%" loading="lazy"><span class="tile-tag"></span></div>
+          <div class="project-body">
+            <p class="project-meta"><span>UAV survey · Remote sensing</span><span>2024</span></p>
+            <h3 class="project-title">Vine health from multispectral drone imagery</h3>
+            <p class="project-role">Data processing &amp; analysis</p>
+            <p class="project-sum">Processed RGB and multispectral UAV imagery of three Portuguese vineyards to map vine health and flag possible disease.</p>
+            <p class="project-impact"><strong>8.4 ha</strong>across three vineyards, at 1.0 to 1.7 cm GSD (RGB)</p>
+            <ul class="stack"><li>Agisoft Metashape</li><li>ArcGIS Pro</li><li>MicaSense Altum</li><li>DJI Inspire 2</li></ul>
+            <button class="project-open" type="button">Read case study <span class="arr" aria-hidden="true">→</span></button>
+          </div>
+          <template>
+            <h3>Context</h3>
+            <p>My BSc Geomatics thesis at the University of Cape Town (2024) looked at using UAV imagery and photogrammetry to monitor vine health and detect possible disease. A project partner captured the imagery between October 2020 and July 2021 over three vineyards in the Bairrada region: Valdoeiro, Quinta de Baixo and ESAC.</p>
+            <ul>
+              <li>Platform: DJI Inspire 2 with a Zenmuse X7 (RGB) and a MicaSense Altum (multispectral and thermal).</li>
+              <li>Flown at 60 to 120 m AGL. GSD 1.0 to 1.7 cm for RGB and 2.5 to 4.8 cm for multispectral.</li>
+            </ul>
+            <h3>What I did</h3>
+            <ul>
+              <li>Radiometrically corrected the multispectral imagery for vignetting, dark-pixel offset, calibration panel and downwelling light sensor.</li>
+              <li>Built RGB and multispectral orthomosaics with SfM/MVS in Agisoft Metashape.</li>
+              <li>Matched a vegetation index to each site's growth stage in ArcGIS Pro: MSAVI for early growth, red-edge NDVI for advanced growth and NDVI after harvest.</li>
+              <li>Ran descriptive statistics, histograms and zonal statistics to map how vine vigour varies across each site.</li>
+            </ul>
+            <figure><img src="assets/vineyard-orthomosaics.jpg" alt="RGB orthomosaics of the three vineyards" loading="lazy"><figcaption>RGB orthomosaics built in Agisoft Metashape. Left to right: Valdoeiro, Quinta de Baixo, ESAC.</figcaption></figure>
+            <figure><img src="assets/vineyard-rendvi.jpg" alt="Red-edge NDVI map of Quinta de Baixo" loading="lazy"><figcaption>Red-edge NDVI map of Quinta de Baixo, produced in ArcGIS Pro. Red marks the most vigorous vines, purple the bare inter-rows and paths.</figcaption></figure>
+          </template>
+        </article>
+
+        <article class="project" id="p-scan" data-cat="lidar" data-place="Gauteng &amp; Western Cape" data-client="Built-environment and civil survey projects at 5D Geo">
+          <div class="project-tile"><canvas class="tile" data-tile="scan" data-seed="19" aria-hidden="true"></canvas><span class="tile-tag"></span></div>
+          <div class="project-body">
+            <p class="project-meta"><span>Laser scanning · BIM</span><span>2026</span></p>
+            <h3 class="project-title">Laser scanning for as-builts</h3>
+            <p class="project-role">Scanning, registration &amp; drafting</p>
+            <p class="project-sum">Terrestrial and SLAM scans of campus gates, high-rises and homes, registered to control and drafted into DWG and BIM deliverables.</p>
+            <p class="project-impact"><strong>~138</strong>scanner setups planned for one multi-storey building</p>
+            <ul class="stack"><li>Leica RTC360</li><li>Leica BLK360</li><li>FJD Trion S2</li><li>Leica Cyclone</li><li>BricsCAD + LISP</li><li>MicroStation</li></ul>
+            <button class="project-open" type="button">Read case study <span class="arr" aria-hidden="true">→</span></button>
+          </div>
+          <template>
+            <h3>Context</h3>
+            <p>Built-environment and civil survey projects at 5D Geo, March to July 2026.</p>
+            <h3>Scanning on site</h3>
+            <ul>
+              <li>Leica RTC360 scans of university campus access gates in Vanderbijlpark, a commercial high-rise in Parktown (the facade, a typical floor and the basements) and a vacant building in Sandton.</li>
+              <li>Interior and exterior Leica BLK360 scans of a private residence in Camps Bay.</li>
+            </ul>
+            <h3>Registration</h3>
+            <ul>
+              <li>Registered, cleaned and georeferenced the point clouds. I also did registration-only work on sites scanned by colleagues: residences in Hout Bay, an office precinct in Sandton, and a boiler and tank farm in Centurion.</li>
+              <li>Registered and georeferenced FJD Trion S2 mobile SLAM data, and georeferenced handheld SLAM scans of a retail centre to control in Hartebeesthoek94 / Lo27.</li>
+              <li>Planned the floor-by-floor Leica Cyclone registration of a multi-storey building of about 138 setups, tied to RTK-surveyed targets.</li>
+            </ul>
+            <h3>Drafting and BIM</h3>
+            <ul>
+              <li>Drafted kerbs, structure footprints, overhangs and basement floor levels into DWG in BricsCAD and Bentley MicroStation.</li>
+              <li>Wrote custom LISP routines in BricsCAD that transfer elevation data onto building footprints traced from the point cloud.</li>
+            </ul>
+          </template>
+        </article>
+
+        <article class="project" id="p-net" data-cat="gis" data-place="Johannesburg" data-client="Shopping-centre wet-services survey at 5D Geo">
+          <div class="project-tile"><canvas class="tile" data-tile="pipes" data-seed="58" aria-hidden="true"></canvas><span class="tile-tag"></span></div>
+          <div class="project-body">
+            <p class="project-meta"><span>GIS · Web mapping</span><span>2026</span></p>
+            <h3 class="project-title">Stormwater &amp; sewer network viewer</h3>
+            <p class="project-role">Developer · GIS database manager</p>
+            <p class="project-sum">A Python data pipeline and a browser-based "net viewer" for the stormwater and sewer network of a large shopping centre.</p>
+            <ul class="stack"><li>Python</li><li>JavaScript</li><li>Web map</li><li>GIS database</li><li>Manhole QC</li></ul>
+            <button class="project-open" type="button">Read case study <span class="arr" aria-hidden="true">→</span></button>
+          </div>
+          <template>
+            <h3>Context</h3>
+            <p>A wet-services survey of a shopping centre in Johannesburg, tracing how sewage and stormwater leave the buildings and parking areas. Manholes, pipes, depths and flow directions were surveyed on site.</p>
+            <h3>What I built</h3>
+            <ul>
+              <li>A Python pipeline to process the surveyed drainage and wet-services data.</li>
+              <li>A browser-based "net viewer" for exploring the stormwater and sewer network on a web map.</li>
+              <li>Managed the project's GIS database and quality-controlled the surveyed manhole data.</li>
+            </ul>
+          </template>
+        </article>
+      </div>
+      <p class="work-status" id="work-status" aria-live="polite"></p>
+
+      <div class="register" id="register">
+        <div class="register-head">
+          <div>
+            <h3 class="col-head">Project register</h3>
+            <p class="register-note">Every job in my signed Work-Integrated Learning logbook, newest first. Client names are withheld.</p>
+          </div>
+          <p class="register-count"><span>22</span> jobs · Jul 2025 – Jul 2026</p>
+        </div>
+        <ol class="reg-list" id="reg-list">
+          <li class="reg-row"><span class="reg-when">Jul 2026</span><div class="reg-site"><strong>Lodge bridge</strong><span>Skukuza, Kruger National Park</span></div><p class="reg-work">Digitised the permanent and structural features on part of a bridge.</p><span class="reg-tag">Drafting</span></li>
+          <li class="reg-row"><span class="reg-when">Jul 2026</span><div class="reg-site"><strong>Shopping-centre parking</strong><span>Johannesburg South</span></div><p class="reg-work">Processed SLAM point clouds, imported survey data, and extracted parking lines from the orthomosaic using pixel values and the raster calculator.</p><span class="reg-tag">SLAM · Raster</span></li>
+          <li class="reg-row"><span class="reg-when">Jul 2026</span><div class="reg-site"><strong>Boiler and tank farm</strong><span>Centurion</span></div><p class="reg-work">Registered and processed the point cloud; the scanning was done by a colleague.</p><span class="reg-tag">Registration</span></li>
+          <li class="reg-row"><span class="reg-when">Jun – Jul 2026</span><div class="reg-site"><strong>Lodge sites</strong><span>Pungume Island &amp; Serengeti, Tanzania</span></div><p class="reg-work">Tree positions, heights and crown radii for 435 trees.</p><button class="reg-case" type="button" data-case="p-trees">Case study →</button></li>
+          <li class="reg-row"><span class="reg-when">Jun 2026</span><div class="reg-site"><strong>Vacant building</strong><span>Sandton</span></div><p class="reg-work">RTC360 scanning, registration and cleaning; drafted kerbs, footprints and overhangs in BricsCAD and MicroStation.</p><span class="reg-tag">TLS · Drafting</span></li>
+          <li class="reg-row"><span class="reg-when">Jun 2026</span><div class="reg-site"><strong>Beverage production site</strong><span>Wadeville</span></div><p class="reg-work">Registered and georeferenced point clouds captured with the FJD Trion S2 mobile SLAM system.</p><span class="reg-tag">SLAM · Registration</span></li>
+          <li class="reg-row"><span class="reg-when">May – Jul 2026</span><div class="reg-site"><strong>Mining-right land tenure</strong><span>KwaZulu-Natal</span></div><p class="reg-work">Database schema, project proposal and a live web GIS viewer for the farm portions.</p><button class="reg-case" type="button" data-case="p-tenure">Case study →</button></li>
+          <li class="reg-row"><span class="reg-when">May – Jun 2026</span><div class="reg-site"><strong>Shopping-centre wet services</strong><span>Johannesburg</span></div><p class="reg-work">Web-based stormwater and sewer "net viewer", GIS database management and QC of surveyed manholes.</p><button class="reg-case" type="button" data-case="p-net">Case study →</button></li>
+          <li class="reg-row"><span class="reg-when">May 2026</span><div class="reg-site"><strong>Office precinct</strong><span>Sandton</span></div><p class="reg-work">Registered and georeferenced point clouds; drafted topographic features and basement floor levels into DWG.</p><span class="reg-tag">Registration · Drafting</span></li>
+          <li class="reg-row"><span class="reg-when">Apr – May 2026</span><div class="reg-site"><strong>Glass-manufacturing site</strong><span>Nigel</span></div><p class="reg-work">Waste earthworks and stockpile volume computations in BricsCAD.</p><span class="reg-tag">Volumes</span></li>
+          <li class="reg-row"><span class="reg-when">Apr – May 2026</span><div class="reg-site"><strong>Commercial high-rise</strong><span>Parktown</span></div><p class="reg-work">RTC360 scans of the facade, a typical floor and the basements; registration, georeferencing and DWG drafting.</p><button class="reg-case" type="button" data-case="p-scan">Case study →</button></li>
+          <li class="reg-row"><span class="reg-when">Apr 2026</span><div class="reg-site"><strong>Private residences</strong><span>Hout Bay</span></div><p class="reg-work">Registration, georeferencing and quality control of interior and exterior point clouds collected by others.</p><span class="reg-tag">Registration · QC</span></li>
+          <li class="reg-row"><span class="reg-when">Apr 2026</span><div class="reg-site"><strong>University campus access gates</strong><span>Vanderbijlpark</span></div><p class="reg-work">RTC360 scanning, registration and cleaning; drafted kerbs, structure footprints and overhangs into DWG in BricsCAD.</p><span class="reg-tag">TLS · Drafting</span></li>
+          <li class="reg-row"><span class="reg-when">Mar – Apr 2026</span><div class="reg-site"><strong>Point-cloud pipeline (training)</strong><span>Paarden Eiland, Cape Town</span></div><p class="reg-work">Built a PDAL and QGIS filtering and classification pipeline for point clouds.</p><span class="reg-tag">PDAL · QGIS</span></li>
+          <li class="reg-row"><span class="reg-when">Mar 2026</span><div class="reg-site"><strong>Facilities database for a scanning quote</strong><span>Southern &amp; Eastern Africa</span></div><p class="reg-work">Digitised building and warehouse footprints from satellite imagery in QGIS to cost laser scanning for each site.</p><span class="reg-tag">GIS</span></li>
+          <li class="reg-row"><span class="reg-when">Mar 2026</span><div class="reg-site"><strong>Private residence</strong><span>Camps Bay</span></div><p class="reg-work">Interior and exterior scans with a Leica BLK360, then point-cloud registration.</p><span class="reg-tag">TLS</span></li>
+          <li class="reg-row"><span class="reg-when">Jan – Feb 2026</span><div class="reg-site"><strong>SANAE 65 field season</strong><span>Fimbul Ice Shelf, Antarctica</span></div><p class="reg-work">Ran the project's ArcGIS environment and weekly team coordination, then flew the GPR survey.</p><button class="reg-case" type="button" data-case="p-gpr">Case study →</button></li>
+          <li class="reg-row"><span class="reg-when">Nov – Dec 2025</span><div class="reg-site"><strong>Antarctic pre-deployment</strong><span>Cape Town</span></div><p class="reg-work">Equipment readiness and calibration checks, flight SOPs, team data logbooks, and GIS data for hazard-aware GPS navigation.</p><button class="reg-case" type="button" data-case="p-gpr">Case study →</button></li>
+          <li class="reg-row"><span class="reg-when">Oct – Nov 2025</span><div class="reg-site"><strong>Surface modelling &amp; interpolation</strong><span>CD:NGI elevation data</span></div><p class="reg-work">Contours, slope and hillshade in ArcGIS Pro; IDW and Kriging compared on spot heights at the same cell size and colour ramp; spatial autocorrelation with Moran's I.</p><span class="reg-tag">Spatial statistics</span></li>
+          <li class="reg-row"><span class="reg-when">Aug – Oct 2025</span><div class="reg-site"><strong>Safest routes to campus</strong><span>Observatory to Claremont, Cape Town</span></div><p class="reg-work">Field-scored transport nodes, a Route Safety Index, hotspot mapping and network analysis.</p><button class="reg-case" type="button" data-case="p-routes">Case study →</button></li>
+          <li class="reg-row"><span class="reg-when">Jul – Aug 2025</span><div class="reg-site"><strong>Google Maps timing study</strong><span>Cape Town</span></div><p class="reg-work">Walked five routes with GPS and a stopwatch against Google's estimates, tracked driving estimates for ten routes three times a day over ten days, and mapped the variance.</p><span class="reg-tag">Fieldwork · Statistics</span></li>
+          <li class="reg-row"><span class="reg-when">Jul 2025</span><div class="reg-site"><strong>Robben Island topographic map</strong><span>Cape Town</span></div><p class="reg-work">A 1:10 000 map in the style of the national 1:50 000 series, as a print PDF and a web map.</p><button class="reg-case" type="button" data-case="p-robben">Case study →</button></li>
+        </ol>
+        <button class="btn btn-line reg-more" id="reg-more" type="button" aria-expanded="false" aria-controls="reg-list">Show all 22 jobs</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COVERAGE: edit the list below; names in data-ne must match Natural Earth names -->
+  <section class="section" id="coverage" aria-labelledby="coverage-title">
+    <div class="wrap">
+      <header class="sec-head sec-head-split">
+        <div>
+          <p class="eyebrow">Coverage</p>
+          <h2 class="sec-title" id="coverage-title">From the Iberian coast to the ice shelf</h2>
+        </div>
+        <p class="sec-note">Highlighted areas are where my projects are. Pins mark project sites; where the exact site isn't public, the pin sits in the region. Select a pin to open its case study.</p>
+      </header>
+      <div class="coverage-grid">
+        <figure class="map-frame">
+          <div class="map" id="map">
+            <canvas id="map-canvas" aria-hidden="true"></canvas>
+            <div class="pins" id="pins"></div>
+            <p class="map-fallback">The map needs JavaScript and the map data file at assets/world-110m.js.</p>
+          </div>
+          <figcaption class="map-collar">
+            <span><i class="key key-served"></i>Project work</span>
+            <span><i class="key key-pin"></i>Project site</span>
+            <span><i class="key key-home"></i>Home base</span>
+            <span class="collar-right">Equal Earth · polar inset · 1 dot ≈ <span id="dot-km">80</span> km</span>
+          </figcaption>
+        </figure>
+        <aside class="coverage-aside">
+          <p class="big-count"><span id="cov-count">5</span><small>countries and regions my projects cover</small></p>
+          <ul class="country-list" id="country-list">
+            <li>South Africa</li>
+            <li>Botswana</li>
+            <li>Tanzania</li>
+            <li>Portugal</li>
+            <li>Antarctica</li>
+          </ul>
+          <p class="aside-label">Projects</p>
+          <ol class="site-list" id="site-list"></ol>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE: data-start / data-end are YYYY-MM. Use data-spans="YYYY-MM:YYYY-MM,YYYY-MM:YYYY-MM" for split stints; leave the end empty for a current role. -->
+  <section class="section" id="experience" aria-labelledby="experience-title">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow">Experience</p>
+        <h2 class="sec-title" id="experience-title">Work history</h2>
+      </header>
+      <div class="tl" id="tl" aria-hidden="true"></div>
+      <ol class="roles">
+        <li class="role" data-start="2026-03" data-end="2026-09" data-short="5D Geo">
+          <div class="role-when"><span>Mar 2026 – Sep 2026</span><span class="role-dur" data-duration></span><span>Full-time</span></div>
+          <div class="role-main">
+            <h3>Junior Professional GISc Practitioner (in Training)</h3>
+            <p class="role-org">5D Geo · Johannesburg</p>
+            <ul class="points">
+              <li>Terrestrial laser scanning with the Leica RTC360 and BLK360, and mobile SLAM with the FJD Trion S2, for campus access-control infrastructure, commercial high-rise basements and residential as-built surveys.</li>
+              <li>Registered and georeferenced the resulting point clouds, including planning the Leica Cyclone registration of a multi-storey building of about 138 setups.</li>
+              <li>Drafted topological features from registered point clouds into AutoCAD and BricsCAD DWG deliverables for architectural and civil design coordination.</li>
+              <li>Developed BIM workflows in BricsCAD, including custom LISP routines that transfer elevation data onto building footprints traced from point clouds.</li>
+              <li>Built a Python data-processing pipeline and a browser-based "net viewer" for stormwater and sewer network data.</li>
+              <li>Classified airborne and mobile LiDAR in TerraScan for projects in South Africa and Tanzania.</li>
+              <li>Managed GIS databases and produced cartographic outputs for cadastral and land-tenure due-diligence assessments.</li>
+            </ul>
+            <ul class="stack"><li>Leica RTC360</li><li>Leica Cyclone</li><li>TerraScan</li><li>BricsCAD + LISP</li><li>Python</li><li>Leaflet</li></ul>
+          </div>
+        </li>
+        <li class="role" data-start="2025-12" data-end="2026-03" data-short="SANAE 65 · SANAP">
+          <div class="role-when"><span>Dec 2025 – Mar 2026</span><span class="role-dur" data-duration></span></div>
+          <div class="role-main">
+            <h3>Drone Pilot &amp; Researcher</h3>
+            <p class="role-org">SANAE 65 expedition · South African National Antarctic Programme</p>
+            <ul class="points">
+              <li>Ran a drone-deployed GPR project for crevasse detection from mission planning to field execution: four survey flights covering 47.2 line-km on the Fimbul Ice Shelf.</li>
+              <li>Before deployment, ran equipment readiness checks, verified the drone and payload calibration, wrote flight SOPs, and issued data logbooks to every team.</li>
+              <li>Managed the project's ArcGIS environment, produced planning maps for task allocation and other members' thesis research, and ran weekly coordination meetings across teams.</li>
+              <li>Launched weather balloons with the South African Weather Service aboard the SA Agulhas II for daily forecasting on the voyage.</li>
+            </ul>
+            <ul class="stack"><li>UgCS</li><li>DJI Matrice 350 RTK</li><li>Zond Aero GPR</li><li>ArcGIS</li><li>Python</li></ul>
+          </div>
+        </li>
+        <li class="role" data-start="2025-07" data-end="2026-02" data-short="NGI · Cape Town">
+          <div class="role-when"><span>Jul 2025 – Feb 2026</span><span class="role-dur" data-duration></span><span>Part-time</span></div>
+          <div class="role-main">
+            <h3>GIS Intern (Work-Integrated Learning)</h3>
+            <p class="role-org">National Geo-spatial Information · Cape Town</p>
+            <ul class="points">
+              <li>Worked with high-resolution orthophotos and LiDAR-derived products at South Africa's national mapping agency.</li>
+              <li>Ran spatial queries, topology validation and attribute corrections across multi-scale datasets in ArcGIS and SQL.</li>
+              <li>Gained exposure to government spatial data infrastructure (SDI) policy and data custodianship.</li>
+            </ul>
+            <ul class="stack"><li>ArcGIS</li><li>SQL</li><li>Orthophotos</li></ul>
+          </div>
+        </li>
+        <li class="role" data-start="2025-03" data-end="2025-06" data-short="UCT Geomatics">
+          <div class="role-when"><span>Mar 2025 – Jun 2025</span><span class="role-dur" data-duration></span><span>Part-time</span></div>
+          <div class="role-main">
+            <h3>Tutor &amp; Lecturer</h3>
+            <p class="role-org">Division of Geomatics · University of Cape Town</p>
+            <ul class="points">
+              <li>Lectured and managed coursework for Computing in GIS.</li>
+              <li>Tutored Numerical Methods, Town Planning and Geomatics IV, and used student feedback to improve content delivery.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="role" data-spans="2024-01:2024-02,2024-06:2024-07" data-short="FBV · Cape Town">
+          <div class="role-when"><span>Jan – Feb and Jun – Jul 2024</span><span class="role-dur" data-duration></span><span>Full-time</span></div>
+          <div class="role-main">
+            <h3>Land Survey Intern</h3>
+            <p class="role-org">Friedlander, Burger &amp; Volkmann Professional Land Surveyors · Cape Town</p>
+            <ul class="points">
+              <li>Built and managed a GIS integrated with Microsoft SharePoint.</li>
+              <li>Processed cadastral datasets in Survey Maker, ArcGIS Pro and Global Mapper, and worked with SQL and GIS databases.</li>
+              <li>Managed and plotted cadastral data in AutoCAD, and worked with the Surveyor-General's offices and records.</li>
+            </ul>
+            <ul class="stack"><li>ArcGIS Pro</li><li>Global Mapper</li><li>Survey Maker</li><li>AutoCAD</li></ul>
+          </div>
+        </li>
+        <li class="role" data-start="2023-02" data-end="2023-06" data-short="UCT Tutor Program">
+          <div class="role-when"><span>Feb 2023 – Jun 2023</span><span class="role-dur" data-duration></span></div>
+          <div class="role-main">
+            <h3>Full Control Tutor</h3>
+            <p class="role-org">University of Cape Town Tutor Program · Cape Town</p>
+            <ul class="points">
+              <li>Supported the course convenor and students through the course projects.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="role" data-start="2021-12" data-end="2022-01" data-short="Pinnacle · Gaborone">
+          <div class="role-when"><span>Dec 2021 – Jan 2022</span><span class="role-dur" data-duration></span><span>Full-time</span></div>
+          <div class="role-main">
+            <h3>Land Survey Intern</h3>
+            <p class="role-org">Pinnacle Geomatics · Gaborone, Botswana</p>
+            <ul class="points">
+              <li>Took part in almost all fieldwork projects, including DJI drone surveys where I set up flight paths.</li>
+              <li>Processed cadastral datasets in Trimble Business Centre, Informate and Bentley Map.</li>
+            </ul>
+            <ul class="stack"><li>Trimble Business Centre</li><li>Bentley Map</li><li>DJI</li></ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- EDUCATION, LICENCES, AWARDS -->
+  <section class="section" id="education" aria-labelledby="education-title">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow">Education &amp; credentials</p>
+        <h2 class="sec-title" id="education-title">Degrees, licences and recognition</h2>
+      </header>
+      <figure class="wil" id="wil" aria-labelledby="wil-title">
+        <div class="wil-head">
+          <div class="wil-intro">
+            <h3 class="col-head" id="wil-title">Work-Integrated Learning toward Professional GISc registration</h3>
+            <p class="wil-total"><span>224</span><small>of 220 required working days logged, Jul 2025 – Jul 2026</small></p>
+          </div>
+          <p class="wil-key"><span><i class="wil-key-bar"></i>Days logged</span><span><i class="wil-key-min"></i>Compulsory minimum</span></p>
+        </div>
+        <div class="wil-scroll">
+          <table class="wil-table">
+            <caption class="sr-only">Working days logged per South African Geomatics Council training category, with the compulsory minimum for each</caption>
+            <thead class="sr-only"><tr><th scope="col">Category</th><th scope="col">Chart</th><th scope="col">Days logged</th></tr></thead>
+            <tbody>
+              <tr class="wil-group"><th colspan="3" scope="colgroup">Compulsory training · 120-day minimum</th></tr>
+              <tr class="wil-row" data-days="30.5" data-min="20"><th scope="row">Data collection and capture</th><td class="wil-cell"><span class="wil-track"><span class="wil-fill" style="width:61%"></span><span class="wil-min" style="left:40%"></span></span></td><td class="wil-val">30.5<small> / 20</small></td></tr>
+              <tr class="wil-row" data-days="46" data-min="15"><th scope="row">Data manipulation</th><td class="wil-cell"><span class="wil-track"><span class="wil-fill" style="width:92%"></span><span class="wil-min" style="left:30%"></span></span></td><td class="wil-val">46<small> / 15</small></td></tr>
+              <tr class="wil-row" data-days="5" data-min="5"><th scope="row">Reproduction procedures</th><td class="wil-cell"><span class="wil-track"><span class="wil-fill" style="width:10%"></span><span class="wil-min" style="left:10%"></span></span></td><td class="wil-val">5<small> / 5</small></td></tr>
+              <tr class="wil-row" data-days="24" data-min="15"><th scope="row">Database and spatial modelling</th><td class="wil-cell"><span class="wil-track"><span class="wil-fill" style="width:48%"></span><span class="wil-min" style="left:30%"></span></span></td><td class="wil-val">24<small> / 15</small></td></tr>
+              <tr class="wil-row" data-days="41.5" data-min="20"><th scope="row">Map production</th><td class="wil-cell"><span class="wil-track"><span class="wil-fill" style="width:83%"></span><span class="wil-min" style="left:40%"></span></span></td><td class="wil-val">41.5<small> / 20</small></td></tr>
+              <tr class="wil-row" data-days="5" data-min="5"><th scope="row">Spatial statistics and interpolation</th><td class="wil-cell"><span class="wil-track"><span class="wil-fill" style="width:10%"></span><span class="wil-min" style="left:10%"></span></span></td><td class="wil-val">5<small> / 5</small></td></tr>
+              <tr class="wil-row" data-days="11" data-min="10"><th scope="row">Spatial analysis</th><td class="wil-cell"><span class="wil-track"><span class="wil-fill" style="width:22%"></span><span class="wil-min" style="left:20%"></span></span></td><td class="wil-val">11<small> / 10</small></td></tr>
+              <tr class="wil-row" data-days="14" data-min="10"><th scope="row">Remote sensing and photogrammetry</th><td class="wil-cell"><span class="wil-track"><span class="wil-fill" style="width:28%"></span><span class="wil-min" style="left:20%"></span></span></td><td class="wil-val">14<small> / 10</small></td></tr>
+              <tr class="wil-row" data-days="32" data-min="20"><th scope="row">Project management</th><td class="wil-cell"><span class="wil-track"><span class="wil-fill" style="width:64%"></span><span class="wil-min" style="left:40%"></span></span></td><td class="wil-val">32<small> / 20</small></td></tr>
+              <tr class="wil-group"><th colspan="3" scope="colgroup">Additional training</th></tr>
+              <tr class="wil-row" data-days="7.5"><th scope="row">Spatial information management, manipulation and recovery</th><td class="wil-cell"><span class="wil-track"><span class="wil-fill" style="width:15%"></span></span></td><td class="wil-val">7.5</td></tr>
+              <tr class="wil-row" data-days="7.5"><th scope="row">Spatial data quality assessment and error management</th><td class="wil-cell"><span class="wil-track"><span class="wil-fill" style="width:15%"></span></span></td><td class="wil-val">7.5</td></tr>
+              <tr class="wil-axis" aria-hidden="true"><td></td><td class="wil-cell"><span class="wil-ticks"><span style="left:0%">0</span><span style="left:20%">10</span><span style="left:40%">20</span><span style="left:60%">30</span><span style="left:80%">40</span><span style="left:100%">50</span></span></td><td></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <figcaption class="wil-cap">Axis in working days. Source: my signed SAGC training schedule. Every compulsory category meets or exceeds its minimum.</figcaption>
+        <div class="wil-tip" id="wil-tip" hidden></div>
+      </figure>
+
+      <div class="two-col">
+        <div>
+          <div>
+            <h3 class="col-head">Education</h3>
+            <ul class="entries">
+              <li class="entry">
+                <span class="entry-when">May 2025 – Present</span>
+                <h3>MScEng Geomatics</h3>
+                <p class="entry-org">University of Cape Town</p>
+                <p class="entry-note">Thesis: automated crevasse detection using UAV-mounted GPR on the Fimbul Ice Shelf, Antarctica, supervised by Dr Moreblessing Shoko, as part of the South African National Antarctic Programme.</p>
+              </li>
+              <li class="entry">
+                <span class="entry-when">Mar 2021 – Nov 2024</span>
+                <h3>BSc Geomatics with Computer Science (Geoinformatics), Honours</h3>
+                <p class="entry-org">University of Cape Town · Honours graduate, GPA above 65%</p>
+                <p class="entry-note">Thesis: UAV technology and photogrammetric practice to monitor vine health and detect possible disease.</p>
+              </li>
+              <li class="entry">
+                <span class="entry-when">2014 – 2019</span>
+                <h3>Cambridge IGCSE and A-Levels</h3>
+                <p class="entry-org">Legae Academy · Gaborone, Botswana</p>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="col-head">Awards</h3>
+            <ul class="entries compact">
+              <li class="entry"><span class="entry-when">2023</span><h3>Engineers Without Borders Bronze Medal, for more than 35 volunteer hours</h3></li>
+              <li class="entry"><span class="entry-when">2022</span><h3>Golden Key International Honour Society, for first-year Geomatics performance</h3></li>
+              <li class="entry"><span class="entry-when">2021</span><h3>Class Medal for the best weighted average in the Geomatics class, UCT</h3></li>
+              <li class="entry"><span class="entry-when">2021</span><h3>Twamley Undergraduate Scholarship, for first-year academic performance</h3></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div>
+            <h3 class="col-head">Licences &amp; registrations</h3>
+            <ul class="entries">
+              <li class="entry">
+                <span class="entry-when">09 / 2025</span>
+                <h3>Remote Pilot Certificate, VLOS rating</h3>
+                <p class="entry-org">South African Civil Aviation Authority (SACAA)</p>
+                <p class="entry-note">Aviation medical certificate valid to 5 June 2029. 12 logged flight hours across five survey missions on the DJI Matrice 350 RTK.</p>
+              </li>
+              <li class="entry">
+                <span class="entry-when">09 / 2026</span>
+                <h3>UgCS Area Scan and True Terrain Following</h3>
+                <p class="entry-org">SPH Engineering · SPH Academy</p>
+              </li>
+              <li class="entry">
+                <span class="entry-when">07 / 2025</span>
+                <h3>Registered Candidate GISc Practitioner</h3>
+                <p class="entry-org">South African Geomatics Council · CGPr GISc-0406</p>
+              </li>
+              <li class="entry">
+                <span class="entry-when">2026</span>
+                <h3>Registered Professional</h3>
+                <p class="entry-org">Botswana Institute of Geomatics</p>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="col-head">Teaching &amp; community</h3>
+            <ul class="entries compact">
+              <li class="entry"><span class="entry-when">2025 – 26</span><h3>SANAP · Polar Engineering Research Group (PERG)</h3></li>
+              <li class="entry"><span class="entry-when">2023</span><h3>Principal GIS Coordinator, iSondlo Garden Project, Engineers Without Borders UCT</h3></li>
+              <li class="entry"><span class="entry-when">2023</span><h3>Head Peer Mentor, Division of Geomatics, UCT</h3></li>
+              <li class="entry"><span class="entry-when">2023</span><h3>Computer Science Tutor (Python), UCT</h3></li>
+              <li class="entry"><span class="entry-when">2022</span><h3>Residential Tutor in Mathematics, Statistics and Computer Science</h3></li>
+              <li class="entry"><span class="entry-when">2022</span><h3>Peer Mentor, UCT · Teens Youth Vocational Camp Facilitator</h3></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap contact-grid">
+      <div class="contact-copy">
+        <p class="eyebrow">Contact</p>
+        <h2 class="contact-title" id="contact-title">Tell me what you're <em>mapping.</em></h2>
+        <p class="contact-lead">I'm available now for freelance and project work, including remote field sites and cross-border travel. Send a short note about the site, the data you need and your timeline.</p>
+        <div class="email-row">
+          <span class="email-text" id="email-text">dkimani.eng@gmail.com</span>
+          <button class="copy-btn" id="copy-email" type="button">Copy address</button>
+        </div>
+        <dl class="channels">
+          <div><dt>Phone</dt><dd>+27 63 436 4187</dd></div>
+          <div><dt>Location</dt><dd>Randburg, Johannesburg · SAST (UTC+2)</dd></div>
+          <div><dt>Elsewhere</dt><dd>
+            <div class="socials">
+              <a href="https://github.com/danzo111" aria-label="GitHub: danzo111" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a>
+              <a href="https://www.linkedin.com/in/daniel-kimani-geoinformatics-gis" aria-label="LinkedIn: Daniel Kimani" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></a>
+            </div>
+          </dd></div>
+        </dl>
+      </div>
+
+      <form class="form-card" id="contact-form" novalidate>
+        <h3>Send a message</h3>
+        <div class="field-row">
+          <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required placeholder="Your name"></div>
+          <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required placeholder="you@company.com"></div>
+        </div>
+        <div class="field">
+          <label for="f-topic">What do you need?</label>
+          <select id="f-topic" name="topic">
+            <option>Drone survey</option>
+            <option>LiDAR or laser scanning</option>
+            <option>Remote sensing or change analysis</option>
+            <option>GIS or web mapping</option>
+            <option>Freelance or full-time role</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-message">Message</label><textarea id="f-message" name="message" required placeholder="The site, the data you need, and your timeline."></textarea></div>
+        <button class="btn btn-solid" type="submit" id="f-submit">Send message <span class="arr" aria-hidden="true">→</span></button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap foot-row">
+    <span>© <span id="year">2026</span> Daniel Kimani Njoroge</span>
+    <span id="foot-coord">Johannesburg · 26°12′S 28°03′E</span>
+    <span>Basemap: Natural Earth</span>
+    <a href="#main">Back to top ↑</a>
+  </div>
+</footer>
+
+<dialog class="case" id="case" aria-labelledby="case-title">
+  <header class="case-head">
+    <div>
+      <p class="eyebrow" id="case-kicker"></p>
+      <h2 id="case-title"></h2>
+    </div>
+    <button class="icon-btn" type="button" id="case-close" aria-label="Close case study">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </header>
+  <div class="case-tile" id="case-tile"></div>
+  <div class="case-content">
+    <dl class="case-meta" id="case-meta"></dl>
+    <div class="case-body" id="case-body"></div>
+  </div>
+  <footer class="case-foot">
+    <button type="button" id="case-prev"><small>Previous</small><span></span></button>
+    <button type="button" id="case-next"><small>Next</small><span></span></button>
+  </footer>
+</dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script src="assets/world-110m.js"></script>
+<script>
+/* ───────────────────────── Site settings ─────────────────────────
+   Everything the scripts need lives here. Text content is in the HTML above. */
+const SITE = {
+  email: 'dkimani.eng@gmail.com',
+  home: { label: 'Johannesburg', country: 'South Africa', lat: -26.2041, lon: 28.0473, elevation: 1753 },
+  contourInterval: 25,                      // metres between contour lines in the hero
+  mapExtent: [[-22, -37], [52, 43]],        // [[west, south], [east, north]] in degrees
+  polarInset: true,                         // draws Antarctica in a south-polar inset, bottom left
+  formEndpoint: ''                          // e.g. 'https://formspree.io/f/xxxxxx'. Empty = opens the visitor's email app
+};
+
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const css = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+const hasD3 = typeof window.d3 !== 'undefined';
+
+function dms(v, pos, neg, seconds = true) {
+  const h = v < 0 ? neg : pos; const a = Math.abs(v);
+  let d = Math.floor(a), mf = (a - d) * 60, m = Math.floor(mf), s = Math.round((mf - m) * 60);
+  if (!seconds) { m = Math.round(mf); if (m === 60) { m = 0; d++; } return `${d}°${String(m).padStart(2, '0')}′${h}`; }
+  if (s === 60) { s = 0; m++; } if (m === 60) { m = 0; d++; }
+  return `${d}°${String(m).padStart(2, '0')}′${String(s).padStart(2, '0')}″${h}`;
+}
+const latStr = (v, s) => dms(v, 'N', 'S', s);
+const lonStr = (v, s) => dms(v, 'E', 'W', s);
+const fmtInt = n => Math.round(n).toLocaleString('en-US');
+const cardCoords = c => { const lat = parseFloat(c.dataset.lat), lon = parseFloat(c.dataset.lon); return isNaN(lat) || isNaN(lon) ? null : { lat, lon }; };
+const exactCoords = c => { const p = cardCoords(c); return p && !('approx' in c.dataset) ? p : null; };
+
+/* Seeded 3D simplex noise */
+function makeNoise(seed) {
+  const p = new Uint8Array(256); for (let i = 0; i < 256; i++) p[i] = i;
+  let s = (seed * 2654435761) >>> 0 || 1;
+  const rnd = () => { s ^= s << 13; s >>>= 0; s ^= s >>> 17; s ^= s << 5; s >>>= 0; return s / 4294967296; };
+  for (let i = 255; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); const t = p[i]; p[i] = p[j]; p[j] = t; }
+  const perm = new Uint8Array(512), pm = new Uint8Array(512);
+  for (let i = 0; i < 512; i++) { perm[i] = p[i & 255]; pm[i] = perm[i] % 12; }
+  const g = [1,1,0,-1,1,0,1,-1,0,-1,-1,0,1,0,1,-1,0,1,1,0,-1,-1,0,-1,0,1,1,0,-1,1,0,1,-1,0,-1,-1];
+  const F3 = 1 / 3, G3 = 1 / 6;
+  const fn = (x, y, z) => {
+    let n0 = 0, n1 = 0, n2 = 0, n3 = 0;
+    const sk = (x + y + z) * F3, i = Math.floor(x + sk), j = Math.floor(y + sk), k = Math.floor(z + sk);
+    const t = (i + j + k) * G3, x0 = x - i + t, y0 = y - j + t, z0 = z - k + t;
+    let i1, j1, k1, i2, j2, k2;
+    if (x0 >= y0) {
+      if (y0 >= z0) { i1 = 1; j1 = 0; k1 = 0; i2 = 1; j2 = 1; k2 = 0; }
+      else if (x0 >= z0) { i1 = 1; j1 = 0; k1 = 0; i2 = 1; j2 = 0; k2 = 1; }
+      else { i1 = 0; j1 = 0; k1 = 1; i2 = 1; j2 = 0; k2 = 1; }
+    } else {
+      if (y0 < z0) { i1 = 0; j1 = 0; k1 = 1; i2 = 0; j2 = 1; k2 = 1; }
+      else if (x0 < z0) { i1 = 0; j1 = 1; k1 = 0; i2 = 0; j2 = 1; k2 = 1; }
+      else { i1 = 0; j1 = 1; k1 = 0; i2 = 1; j2 = 1; k2 = 0; }
+    }
+    const x1 = x0 - i1 + G3, y1 = y0 - j1 + G3, z1 = z0 - k1 + G3;
+    const x2 = x0 - i2 + 2 * G3, y2 = y0 - j2 + 2 * G3, z2 = z0 - k2 + 2 * G3;
+    const x3 = x0 - 1 + 3 * G3, y3 = y0 - 1 + 3 * G3, z3 = z0 - 1 + 3 * G3;
+    const ii = i & 255, jj = j & 255, kk = k & 255;
+    let t0 = .6 - x0 * x0 - y0 * y0 - z0 * z0;
+    if (t0 > 0) { const q = pm[ii + perm[jj + perm[kk]]] * 3; t0 *= t0; n0 = t0 * t0 * (g[q] * x0 + g[q + 1] * y0 + g[q + 2] * z0); }
+    let t1 = .6 - x1 * x1 - y1 * y1 - z1 * z1;
+    if (t1 > 0) { const q = pm[ii + i1 + perm[jj + j1 + perm[kk + k1]]] * 3; t1 *= t1; n1 = t1 * t1 * (g[q] * x1 + g[q + 1] * y1 + g[q + 2] * z1); }
+    let t2 = .6 - x2 * x2 - y2 * y2 - z2 * z2;
+    if (t2 > 0) { const q = pm[ii + i2 + perm[jj + j2 + perm[kk + k2]]] * 3; t2 *= t2; n2 = t2 * t2 * (g[q] * x2 + g[q + 1] * y2 + g[q + 2] * z2); }
+    let t3 = .6 - x3 * x3 - y3 * y3 - z3 * z3;
+    if (t3 > 0) { const q = pm[ii + 1 + perm[jj + 1 + perm[kk + 1]]] * 3; t3 *= t3; n3 = t3 * t3 * (g[q] * x3 + g[q + 1] * y3 + g[q + 2] * z3); }
+    return 32 * (n0 + n1 + n2 + n3);
+  };
+  fn.rand = rnd;
+  return fn;
+}
+
+/* ───────── Theme toggle ───────── */
+(function theme() {
+  const root = document.documentElement, btn = $('#theme-toggle');
+  const lightMQ = matchMedia('(prefers-color-scheme: light)');
+  const current = () => root.dataset.theme || (lightMQ.matches ? 'light' : 'dark');
+  const label = () => { const t = current(); btn.dataset.mode = t; btn.setAttribute('aria-label', t === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'); };
+  const sync = () => { label(); document.dispatchEvent(new CustomEvent('themechange')); };
+  btn.addEventListener('click', () => {
+    const next = current() === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+  lightMQ.addEventListener('change', sync);
+  new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  label();
+})();
+
+/* ───────── Header + navigation ───────── */
+(function nav() {
+  const head = $('#site-head');
+  const onScroll = () => head.classList.toggle('is-stuck', window.scrollY > 10);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  const btn = $('#menu-btn'), panel = $('#mobile-nav');
+  const setOpen = open => {
+    panel.hidden = !open; btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); head.classList.toggle('menu-open', open);
+  };
+  btn.addEventListener('click', () => setOpen(panel.hidden));
+  $$('a', panel).forEach(a => a.addEventListener('click', () => setOpen(false)));
+  addEventListener('keydown', e => { if (e.key === 'Escape' && !panel.hidden) setOpen(false); });
+
+  const links = $$('.nav a'); const byId = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      links.forEach(l => l.removeAttribute('aria-current'));
+      byId.get(e.target.id)?.setAttribute('aria-current', 'true');
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  byId.forEach((a, id) => { const s = document.getElementById(id); if (s) io.observe(s); });
+})();
+
+/* ───────── Static bits derived from settings ───────── */
+(function basics() {
+  const h = SITE.home;
+  $('#home-dms').textContent = `${latStr(h.lat, false)} ${lonStr(h.lon, false)}`;
+  $('#foot-coord').textContent = `${h.label} · ${latStr(h.lat, false)} ${lonStr(h.lon, false)}`;
+  $('#year').textContent = new Date().getFullYear();
+  $('#ci').textContent = SITE.contourInterval;
+  $('#cov-count').textContent = $$('#country-list li').length;
+  $$('.layer').forEach(l => { const n = $$('.chips li', l).length; $('.count', l).textContent = `${n} tools`; });
+  $$('.project').forEach(c => {
+    const t = $('.tile-tag', c); if (!t) return;
+    const p = exactCoords(c);
+    t.textContent = p ? `${latStr(p.lat, false)} ${lonStr(p.lon, false)}` : c.dataset.place;
+  });
+})();
+
+/* ───────── Hero: live contour field ───────── */
+(function terrain() {
+  const canvas = $('#terrain'), hero = $('.hero');
+  if (!canvas || !hasD3) return;
+  const ctx = canvas.getContext('2d');
+  const noise = makeNoise(7);
+  const STEP = 0.1, PPD = 4200;          // field units per contour; screen px per degree
+  const H0 = SITE.home, mPerUnit = SITE.contourInterval / STEP;
+  const cosLat = Math.cos(H0.lat * Math.PI / 180);
+  const IDLE = { x: .85, y: .34, amp: .6 };
+  let W = 0, H = 0, CELL = 10, cols = 0, rows = 0, vals = null, dpr = 1, col = {};
+  let t = 3.7, last = 0, running = false, inView = true, queued = false;
+  const ptr = { x: IDLE.x, y: IDLE.y, tx: IDLE.x, ty: IDLE.y, amp: IDLE.amp, tamp: IDLE.amp, inside: false, px: 0, py: 0 };
+  const contours = d3.contours().smooth(true);
+  let path;
+  const roCoord = $('#ro-coord'), roElev = $('#ro-elev');
+
+  const lonAt = X => H0.lon + (X - W / 2) / (PPD * cosLat);
+  const latAt = Y => H0.lat - (Y - H / 2) / PPD;
+  const xAtLon = lon => (lon - H0.lon) * PPD * cosLat + W / 2;
+  const yAtLat = lat => (H0.lat - lat) * PPD + H / 2;
+
+  function readColors() {
+    col = { lo: css('--contour-lo'), hi: css('--contour-hi'), accent: css('--accent'), ink: css('--ink-2') };
+    col.interp = d3.interpolateRgb(col.lo, col.hi);
+  }
+
+  function buildTicks() {
+    const host = $('#ticks'), nl = $('.neatline');
+    host.replaceChildren();
+    const hr = hero.getBoundingClientRect(), r = nl.getBoundingClientRect();
+    const ox = r.left - hr.left, oy = r.top - hr.top;
+    const per = 1 / 30;                 // a tick every 2′, a label every 4′
+    const frag = document.createDocumentFragment();
+    const lonA = lonAt(ox + 30), lonB = lonAt(ox + r.width - 30);
+    for (let v = Math.ceil(lonA / per) * per; v <= lonB; v += per) {
+      const el = document.createElement('span'); el.className = 'tick tick-x';
+      el.style.left = (xAtLon(v) - ox) + 'px';
+      if (Math.round(v * 60) % 4 === 0) el.textContent = lonStr(v, false);
+      frag.append(el);
+    }
+    const latA = latAt(oy + r.height - 40), latB = latAt(oy + 40);
+    for (let v = Math.ceil(latA / per) * per; v <= latB; v += per) {
+      const el = document.createElement('span'); el.className = 'tick tick-y';
+      el.style.top = (yAtLat(v) - oy) + 'px';
+      if (Math.round(Math.abs(v) * 60) % 4 === 0) { const s = document.createElement('span'); s.textContent = latStr(v, false); el.append(s); }
+      frag.append(el);
+    }
+    host.append(frag);
+  }
+
+  function updateScale() {
+    const pxPerKm = PPD / 110.574, w = Math.round(pxPerKm * 2);
+    const svg = $('#scalebar-svg'); if (!svg) return;
+    svg.setAttribute('width', w); svg.setAttribute('viewBox', `0 0 ${w} 6`);
+    const seg = w / 4; let s = '';
+    for (let i = 0; i < 4; i++) s += `<rect x="${i * seg}" y="0" width="${seg}" height="6" fill="${i % 2 ? 'none' : 'currentColor'}" stroke="currentColor" stroke-width=".8"/>`;
+    svg.innerHTML = s;
+  }
+
+  function resize() {
+    const r = hero.getBoundingClientRect();
+    W = Math.round(r.width); H = Math.round(r.height);
+    if (!W || !H) return;
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    CELL = W > 1100 ? 12 : W > 700 ? 10 : 8;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    cols = Math.ceil(W / CELL) + 3; rows = Math.ceil(H / CELL) + 3;
+    vals = new Float64Array(cols * rows);
+    contours.size([cols, rows]);
+    path = d3.geoPath(d3.geoIdentity().scale(CELL).translate([-CELL, -CELL]), ctx);
+    buildTicks(); updateScale(); draw();
+  }
+
+  function field() {
+    const sc = 1 / 560, bx = ptr.x * W, by = ptr.y * H;
+    const sig = Math.min(W, H) * .19, sig2 = 2 * sig * sig, amp = ptr.amp;
+    let k = 0;
+    for (let j = 0; j < rows; j++) {
+      const Y = (j - .5) * CELL, ny = Y * sc;
+      for (let i = 0; i < cols; i++, k++) {
+        const X = (i - .5) * CELL, nx = X * sc;
+        let v = .62 * noise(nx, ny, t) + .27 * noise(nx * 2.3 + 11, ny * 2.3 + 7, t * 1.4) + .11 * noise(nx * 5.1 + 3, ny * 5.1 + 19, t * 2);
+        v += .5 * (X / W) - .22;                       // ground rises to the east, away from the title
+        const dx = X - bx, dy = Y - by; v += amp * Math.exp(-(dx * dx + dy * dy) / sig2);
+        vals[k] = v;
+      }
+    }
+  }
+
+  function sample(X, Y) {
+    const i = Math.max(0, Math.min(cols - 1, Math.round(X / CELL + .5)));
+    const j = Math.max(0, Math.min(rows - 1, Math.round(Y / CELL + .5)));
+    return vals[j * cols + i];
+  }
+
+  function draw() {
+    if (!vals) return;
+    field();
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, W, H);
+    let mn = Infinity, mx = -Infinity;
+    for (let k = 0; k < vals.length; k++) { const v = vals[k]; if (v < mn) mn = v; if (v > mx) mx = v; }
+    const th = []; for (let q = Math.ceil(mn / STEP); q * STEP <= mx; q++) th.push(q * STEP);
+    const polys = contours.thresholds(th)(vals);
+    ctx.lineJoin = 'round';
+    for (const p of polys) {
+      if (!p.coordinates.length) continue;
+      const q = Math.round(p.value / STEP), isIndex = q % 5 === 0;
+      ctx.beginPath(); path(p);
+      ctx.strokeStyle = col.interp(Math.max(0, Math.min(1, (p.value + .55) / 2.2)));
+      ctx.globalAlpha = isIndex ? 1 : .62;
+      ctx.lineWidth = isIndex ? 1.35 : .75;
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+
+    // Spot height on the summit nearest the pointer's hill
+    const ci = Math.round(ptr.x * W / CELL + .5), cj = Math.round(ptr.y * H / CELL + .5);
+    const R = Math.ceil(Math.min(W, H) * .2 / CELL);
+    let best = -Infinity, bi = ci, bj = cj;
+    for (let j = Math.max(0, cj - R); j < Math.min(rows, cj + R); j++)
+      for (let i = Math.max(0, ci - R); i < Math.min(cols, ci + R); i++) {
+        const v = vals[j * cols + i]; if (v > best) { best = v; bi = i; bj = j; }
+      }
+    const sx = (bi - .5) * CELL, sy = (bj - .5) * CELL;
+    if ((W > 760 || ptr.inside) && sx > 20 && sx < W - 90 && sy > 90 && sy < H - 40) {
+      ctx.fillStyle = col.accent;
+      ctx.beginPath(); ctx.moveTo(sx, sy - 5); ctx.lineTo(sx + 5, sy + 4); ctx.lineTo(sx - 5, sy + 4); ctx.closePath(); ctx.fill();
+      ctx.font = '500 10px "Martian Mono", ui-monospace, monospace';
+      ctx.fillStyle = col.ink;
+      ctx.fillText(`${fmtInt(H0.elevation + best * mPerUnit)}`, sx + 9, sy + 4);
+    }
+
+    const X = ptr.inside ? ptr.px : W / 2, Y = ptr.inside ? ptr.py : H / 2;
+    roCoord.textContent = `${latStr(latAt(Y))} ${lonStr(lonAt(X))}`;
+    roElev.textContent = `${fmtInt(H0.elevation + sample(X, Y) * mPerUnit)} m`;
+  }
+
+  function frame(now) {
+    if (!running) return;
+    requestAnimationFrame(frame);
+    if (now - last < 33) return;
+    const dt = Math.min(100, now - last); last = now;
+    t += dt * 0.000032;
+    ptr.x += (ptr.tx - ptr.x) * .075; ptr.y += (ptr.ty - ptr.y) * .075;
+    ptr.amp += (ptr.tamp - ptr.amp) * .045;
+    draw();
+  }
+  const start = () => { if (running || reduceMotion || !inView || document.hidden) return; running = true; last = performance.now(); requestAnimationFrame(frame); };
+  const stop = () => { running = false; };
+  const redrawOnce = () => { if (queued) return; queued = true; requestAnimationFrame(() => { queued = false; draw(); }); };
+
+  hero.addEventListener('pointermove', e => {
+    const r = hero.getBoundingClientRect();
+    ptr.px = e.clientX - r.left; ptr.py = e.clientY - r.top;
+    ptr.tx = ptr.px / W; ptr.ty = ptr.py / H; ptr.inside = true; ptr.tamp = 1.05;
+    if (reduceMotion) { ptr.x = ptr.tx; ptr.y = ptr.ty; ptr.amp = ptr.tamp; redrawOnce(); }
+  });
+  hero.addEventListener('pointerleave', () => {
+    ptr.inside = false; ptr.tx = IDLE.x; ptr.ty = IDLE.y; ptr.tamp = IDLE.amp;
+    if (reduceMotion) { ptr.x = IDLE.x; ptr.y = IDLE.y; ptr.amp = IDLE.amp; redrawOnce(); }
+  });
+
+  new IntersectionObserver(([e]) => { inView = e.isIntersecting; inView ? start() : stop(); }).observe(hero);
+  document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+  document.addEventListener('themechange', () => { readColors(); draw(); });
+  let rt; new ResizeObserver(() => { clearTimeout(rt); rt = setTimeout(resize, 60); }).observe(hero);
+  readColors(); resize(); start();
+  document.fonts?.ready.then(() => { buildTicks(); draw(); });
+})();
+
+/* ───────── Generated map tiles for cards without a photo ───────── */
+const RAMPS = {
+  ndvi:   ['#5e3c1d', '#9c6d34', '#cfae66', '#c3c56d', '#82ac52', '#3f8240', '#1d5a2c'],
+  hyps:   ['#244a49', '#35625d', '#4d7c6f', '#74946f', '#a9a873', '#d2b97f', '#e9dab6'],
+  change: ['#6e1f1c', '#a9443a', '#d68c6c', '#e8dcc7', '#a3c4a2', '#559c71', '#1f6a46']
+};
+const tileJobs = new WeakMap();
+function renderTile(cv) {
+  if (!cv || cv.tagName !== 'CANVAS' || !hasD3) return;
+  const r = cv.getBoundingClientRect(); const W = Math.round(r.width), H = Math.round(r.height);
+  if (W < 4 || H < 4) return;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  cv.width = W * dpr; cv.height = H * dpr;
+  const ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const kind = cv.dataset.tile || 'hyps', seed = +cv.dataset.seed || 1;
+  const n = makeNoise(seed);
+  const C = { g2: css('--ground-2'), ink3: css('--ink-3'), ink: css('--ink'), accent: css('--accent'), wash: css('--accent-wash'), lo: css('--contour-lo') };
+  const scale = 1 / 170;
+  const fbm = (x, y) => .6 * n(x * scale, y * scale, seed * .37) + .3 * n(x * scale * 2.4, y * scale * 2.4, seed) + .1 * n(x * scale * 6, y * scale * 6, 2);
+
+  if (RAMPS[kind]) {
+    const px = Math.max(4, Math.round(W / 110));
+    const ramp = d3.scaleQuantize().domain([-.75, .75]).range(RAMPS[kind]);
+    for (let y = 0; y < H; y += px) for (let x = 0; x < W; x += px) {
+      let v = fbm(x, y);
+      if (kind === 'change') v = v * .55 + .7 * Math.exp(-((x - W * .45) ** 2 + (y - H * .55) ** 2) / (2 * (W * .16) ** 2)) * (n(x / 40, y / 40, 9) > -.2 ? -1 : .3);
+      ctx.fillStyle = ramp(v); ctx.fillRect(x, y, px, px);
+    }
+    const gc = Math.ceil(W / 8) + 2, gr = Math.ceil(H / 8) + 2, grid = new Float64Array(gc * gr);
+    for (let j = 0; j < gr; j++) for (let i = 0; i < gc; i++) grid[j * gc + i] = fbm((i - 1) * 8, (j - 1) * 8);
+    const c = d3.contours().size([gc, gr]).smooth(true).thresholds([.18])(grid)[0];
+    const p = d3.geoPath(d3.geoIdentity().scale(8).translate([-8, -8]), ctx);
+    ctx.setLineDash([5, 4]); ctx.lineWidth = 1.2; ctx.strokeStyle = 'rgba(255,255,255,.85)';
+    ctx.beginPath(); p(c); ctx.stroke(); ctx.setLineDash([]);
+    return;
+  }
+
+  // Vector-style tiles, drawn from theme tokens
+  ctx.fillStyle = C.g2; ctx.fillRect(0, 0, W, H);
+  const mounds = kind === 'stockpiles'
+    ? d3.range(6).map(() => [W * (.12 + n.rand() * .76), H * (.18 + n.rand() * .64), 16 + n.rand() * 26, .7 + n.rand() * .6])
+    : null;
+  const gc = Math.ceil(W / 10) + 2, gr = Math.ceil(H / 10) + 2, grid = new Float64Array(gc * gr);
+  for (let j = 0; j < gr; j++) for (let i = 0; i < gc; i++) {
+    const X = (i - 1) * 10, Y = (j - 1) * 10;
+    grid[j * gc + i] = mounds
+      ? mounds.reduce((sum, [mx, my, rr, hh]) => sum + hh * Math.exp(-((X - mx) ** 2 + (Y - my) ** 2) / (2 * rr * rr)), 0) + .04 * fbm(X, Y)
+      : fbm(X, Y);
+  }
+  const p = d3.geoPath(d3.geoIdentity().scale(10).translate([-10, -10]), ctx);
+  ctx.strokeStyle = C.lo; ctx.lineWidth = .8;
+  d3.contours().size([gc, gr]).smooth(true).thresholds(mounds ? d3.range(.12, 1.6, .12) : d3.range(-1, 1, .12))(grid)
+    .forEach(m => { ctx.beginPath(); p(m); ctx.stroke(); });
+
+  if (mounds) {
+    const toe = d3.contours().size([gc, gr]).smooth(true).thresholds([.06])(grid)[0];
+    ctx.setLineDash([4, 3]); ctx.strokeStyle = C.accent; ctx.lineWidth = 1.3;
+    ctx.beginPath(); p(toe); ctx.stroke(); ctx.setLineDash([]);
+    mounds.forEach(([mx, my]) => { ctx.beginPath(); ctx.arc(mx, my, 2, 0, Math.PI * 2); ctx.fillStyle = C.ink; ctx.fill(); });
+    return;
+  }
+
+  if (kind === 'parcels') {
+    const pts = []; const step = Math.max(26, W / 14);
+    for (let y = -step; y < H + step; y += step * .8) for (let x = -step; x < W + step; x += step) pts.push([x + (n.rand() - .5) * step * .7, y + (n.rand() - .5) * step * .5]);
+    const vor = d3.Delaunay.from(pts).voronoi([0, 0, W, H]);
+    pts.forEach((_, i) => { if (n.rand() < .14) { ctx.beginPath(); vor.renderCell(i, ctx); ctx.fillStyle = C.wash; ctx.fill(); } });
+    ctx.beginPath(); vor.render(ctx); ctx.strokeStyle = C.ink3; ctx.lineWidth = .9; ctx.stroke();
+    ctx.beginPath(); vor.renderBounds(ctx); ctx.stroke();
+    const sel = vor.delaunay.find(W * .58, H * .48);
+    ctx.beginPath(); vor.renderCell(sel, ctx); ctx.lineWidth = 2; ctx.strokeStyle = C.accent; ctx.stroke();
+    ctx.globalAlpha = .25; ctx.fillStyle = C.accent; ctx.fill(); ctx.globalAlpha = 1;
+    return;
+  }
+
+  if (kind === 'trees') {
+    const shade = d3.interpolateRgb(C.lo, C.accent);
+    const crowns = [];
+    for (let k = 0; k < 260 && crowns.length < 90; k++) {
+      const x = n.rand() * W, y = n.rand() * H;
+      if (fbm(x, y) < -.12) continue;
+      const h = Math.max(0, Math.min(1, (n(x / 60, y / 60, 4) + 1) / 2));
+      const rr = 3 + h * 9;
+      if (crowns.some(([cx, cy, cr]) => Math.hypot(cx - x, cy - y) < (cr + rr) * .7)) continue;
+      crowns.push([x, y, rr, h]);
+    }
+    crowns.forEach(([x, y, rr, h]) => {
+      ctx.beginPath(); ctx.arc(x, y, rr, 0, Math.PI * 2);
+      ctx.globalAlpha = .35; ctx.fillStyle = shade(h); ctx.fill();
+      ctx.globalAlpha = 1; ctx.strokeStyle = shade(h); ctx.lineWidth = 1; ctx.stroke();
+      ctx.beginPath(); ctx.arc(x, y, 1.4, 0, Math.PI * 2); ctx.fillStyle = C.ink; ctx.fill();
+    });
+    return;
+  }
+
+  if (kind === 'scan') {
+    const pad = Math.max(14, W * .05), fw = W - 2 * pad, fh = H - 2 * pad;
+    ctx.strokeStyle = C.ink3; ctx.lineWidth = 1.4; ctx.strokeRect(pad, pad, fw, fh);
+    ctx.lineWidth = 1;
+    [[.28, 0, .28, .58], [.56, .42, .56, 1], [.78, 0, .78, .58], [0, .58, .62, .58]].forEach(([a, b, c2, d]) => {
+      ctx.beginPath(); ctx.moveTo(pad + fw * a, pad + fh * b); ctx.lineTo(pad + fw * c2, pad + fh * d); ctx.stroke();
+    });
+    const setups = [];
+    for (let j = 0; j < 3; j++) {
+      const row = [];
+      for (let i = 0; i < 7; i++) row.push([pad + fw * (i + .5) / 7 + (n.rand() - .5) * 10, pad + fh * (j + .5) / 3 + (n.rand() - .5) * 10]);
+      setups.push(...(j % 2 ? row.reverse() : row));
+    }
+    setups.forEach(([x, y], i) => { if (i % 4) return; ctx.beginPath(); ctx.arc(x, y, Math.min(W, H) * .14, 0, Math.PI * 2); ctx.fillStyle = C.wash; ctx.fill(); });
+    ctx.beginPath(); setups.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y));
+    ctx.strokeStyle = C.accent; ctx.globalAlpha = .75; ctx.lineWidth = 1.1; ctx.setLineDash([3, 3]); ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha = 1;
+    setups.forEach(([x, y]) => { ctx.beginPath(); ctx.moveTo(x, y - 4.5); ctx.lineTo(x + 4, y + 3); ctx.lineTo(x - 4, y + 3); ctx.closePath(); ctx.fillStyle = C.ink; ctx.fill(); });
+    return;
+  }
+
+  if (kind === 'routes') {
+    // street grid, a main-road corridor, scored stops with 100 m buffers, and the safest route
+    const ang = -.62, ca = Math.cos(ang), sa = Math.sin(ang), L = Math.hypot(W, H);
+    const line = (x1, y1, x2, y2) => { ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke(); };
+    ctx.strokeStyle = C.ink3; ctx.lineWidth = .8; ctx.globalAlpha = .45;
+    for (let k = -14; k <= 14; k++) { const o = k * 24 + (n.rand() - .5) * 8; line(W / 2 - ca * L - sa * o, H / 2 - sa * L + ca * o, W / 2 + ca * L - sa * o, H / 2 + sa * L + ca * o); }
+    for (let k = -14; k <= 14; k++) { const o = k * 30 + (n.rand() - .5) * 10; line(W / 2 + ca * o + sa * L, H / 2 + sa * o - ca * L, W / 2 + ca * o - sa * L, H / 2 + sa * o + ca * L); }
+    ctx.globalAlpha = 1;
+    const road = d3.range(0, 1.0001, .04).map(t => [W * (-.04 + t * 1.08), H * (.86 - t * .7) + Math.sin(t * 6 + seed) * 7]);
+    ctx.beginPath(); road.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y));
+    ctx.strokeStyle = C.ink; ctx.globalAlpha = .7; ctx.lineWidth = 4; ctx.stroke(); ctx.globalAlpha = 1;
+    const stops = road.filter((_, i) => i % 3 === 1);
+    const best = stops[Math.floor(stops.length * .45)];
+    ctx.beginPath(); ctx.moveTo(best[0], best[1]); ctx.lineTo(best[0] + sa * 46, best[1] - ca * 46); ctx.lineTo(W * .92, H * .1);
+    ctx.strokeStyle = C.accent; ctx.lineWidth = 2.4; ctx.setLineDash([6, 4]); ctx.stroke(); ctx.setLineDash([]);
+    stops.forEach(([x, y]) => {
+      const risk = (n(x / 45, y / 45, 3) + 1) / 2;
+      ctx.beginPath(); ctx.arc(x, y, 15, 0, Math.PI * 2); ctx.strokeStyle = C.ink3; ctx.lineWidth = .8; ctx.setLineDash([2, 3]); ctx.stroke(); ctx.setLineDash([]);
+      ctx.beginPath(); ctx.arc(x, y, 4.2, 0, Math.PI * 2); ctx.fillStyle = risk > .56 ? C.accent : C.ink; ctx.fill();
+      ctx.lineWidth = 2; ctx.strokeStyle = C.g2; ctx.stroke();
+    });
+    ctx.beginPath(); ctx.rect(W * .92 - 7, H * .1 - 7, 14, 14); ctx.fillStyle = C.ink; ctx.fill();
+    return;
+  }
+
+  if (kind === 'pipes') {
+    // building footprints, a branching drainage network with manholes and flow arrows
+    ctx.fillStyle = C.wash; ctx.strokeStyle = C.ink3; ctx.lineWidth = 1;
+    [[.06, .08, .34, .3], [.46, .06, .3, .24], [.8, .1, .16, .32]].forEach(([x, y, w, h]) => { ctx.fillRect(W * x, H * y, W * w, H * h); ctx.strokeRect(W * x, H * y, W * w, H * h); });
+    const trunkY = H * .74, xs = d3.range(7).map(i => W * (.07 + i * .135) + (n.rand() - .5) * 8);
+    const trunk = xs.map((x, i) => [x, trunkY + (n.rand() - .5) * 10 + i * 1.5]);
+    const arrow = (a, b, col) => {
+      const mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2, t = Math.atan2(b[1] - a[1], b[0] - a[0]);
+      ctx.save(); ctx.translate(mx, my); ctx.rotate(t); ctx.beginPath(); ctx.moveTo(4, 0); ctx.lineTo(-3, -3.2); ctx.lineTo(-3, 3.2); ctx.closePath(); ctx.fillStyle = col; ctx.fill(); ctx.restore();
+    };
+    const pipe = (a, b, col, w, dash) => { ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.strokeStyle = col; ctx.lineWidth = w; ctx.setLineDash(dash || []); ctx.stroke(); ctx.setLineDash([]); arrow(a, b, col); };
+    const manholes = [...trunk];
+    trunk.slice(0, -1).forEach((p, i) => {
+      pipe(p, trunk[i + 1], C.accent, 2.4);
+      if (i % 2 === 0) {
+        const up = [p[0] + (n.rand() - .5) * 20, H * (.42 + n.rand() * .12)], up2 = [up[0] + 18, H * (.18 + n.rand() * .1)];
+        pipe(up2, up, C.ink, 1.4, [5, 3]); pipe(up, p, C.ink, 1.4, [5, 3]); manholes.push(up, up2);
+      }
+    });
+    const out = trunk[trunk.length - 1];
+    pipe(out, [W - 6, out[1]], C.accent, 2.4);
+    manholes.forEach(([x, y]) => { ctx.fillStyle = C.g2; ctx.strokeStyle = C.ink; ctx.lineWidth = 1.2; ctx.fillRect(x - 4, y - 4, 8, 8); ctx.strokeRect(x - 4, y - 4, 8, 8); });
+    return;
+  }
+
+  if (kind === 'island') {
+    // a small 1:10 000-style island: coastline, beach, rocks, ring road, buildings, vegetation
+    const g = 6, gc2 = Math.ceil(W / g) + 2, gr2 = Math.ceil(H / g) + 2, isl = new Float64Array(gc2 * gr2);
+    const cx = W * .5, cy = H * .52, rx = W * .2, ry = H * .4;
+    for (let j = 0; j < gr2; j++) for (let i = 0; i < gc2; i++) {
+      const X = (i - 1) * g, Y = (j - 1) * g, dx = (X - cx) / rx, dy = (Y - cy) / ry;
+      isl[j * gc2 + i] = 1 - (dx * dx + dy * dy) + .28 * fbm(X * 2.2, Y * 2.2);
+    }
+    const ip = d3.geoPath(d3.geoIdentity().scale(g).translate([-g, -g]), ctx);
+    const lvl = t => d3.contours().size([gc2, gr2]).smooth(true).thresholds([t])(isl)[0];
+    ctx.strokeStyle = C.lo; ctx.lineWidth = .6; ctx.globalAlpha = .6;
+    for (let x = 0; x < W; x += 34) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+    for (let y = 0; y < H; y += 34) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+    ctx.globalAlpha = 1;
+    [-.18, -.08].forEach(t => { ctx.beginPath(); ip(lvl(t)); ctx.strokeStyle = C.lo; ctx.lineWidth = .8; ctx.stroke(); });
+    ctx.beginPath(); ip(lvl(0)); ctx.fillStyle = C.wash; ctx.fill(); ctx.strokeStyle = C.ink; ctx.lineWidth = 1.4; ctx.stroke();
+    ctx.beginPath(); ip(lvl(.1)); ctx.setLineDash([3, 3]); ctx.strokeStyle = C.accent; ctx.lineWidth = 1; ctx.stroke(); ctx.setLineDash([]);
+    ctx.beginPath(); ip(lvl(.45)); ctx.strokeStyle = C.accent; ctx.lineWidth = 1.8; ctx.stroke();
+    for (let k = 0; k < 40; k++) {
+      const a = n.rand() * Math.PI * 2, r = 1.05 + n.rand() * .12, x = cx + Math.cos(a) * rx * r, y = cy + Math.sin(a) * ry * r;
+      ctx.beginPath(); ctx.arc(x, y, 1.1, 0, Math.PI * 2); ctx.fillStyle = C.ink3; ctx.fill();
+    }
+    for (let k = 0; k < 70; k++) {
+      const x = cx + (n.rand() - .5) * rx * 1.6, y = cy + (n.rand() - .5) * ry * 1.6;
+      const i = Math.round(x / g) + 1, j = Math.round(y / g) + 1, v = isl[j * gc2 + i];
+      if (v > .55) { ctx.beginPath(); ctx.arc(x, y, 1.8, 0, Math.PI * 2); ctx.strokeStyle = C.lo; ctx.lineWidth = 1; ctx.stroke(); }
+    }
+    for (let k = 0; k < 9; k++) {
+      const x = cx - rx * .55 + (n.rand() - .5) * rx * .5, y = cy - ry * .45 + n.rand() * ry * .5;
+      ctx.fillStyle = C.ink; ctx.fillRect(x, y, 4 + n.rand() * 5, 3 + n.rand() * 4);
+    }
+    return;
+  }
+}
+(function tiles() {
+  const ro = new ResizeObserver(entries => entries.forEach(e => {
+    const cv = e.target; clearTimeout(tileJobs.get(cv)); tileJobs.set(cv, setTimeout(() => renderTile(cv), 40));
+  }));
+  $$('canvas.tile').forEach(cv => { ro.observe(cv); renderTile(cv); });
+  document.addEventListener('themechange', () => $$('canvas.tile').forEach(renderTile));
+})();
+
+/* ───────── Projects: filters + case study dialog ───────── */
+const cards = $$('.project');
+const dlg = $('#case');
+let currentCase = -1;
+function openCase(i) {
+  const card = cards[i]; if (!card) return;
+  currentCase = i;
+  $('#case-kicker').textContent = $('.project-meta span', card).textContent;
+  $('#case-title').textContent = $('.project-title', card).textContent;
+  const meta = $('#case-meta'); meta.replaceChildren();
+  const add = (k, v, wide) => { if (!v) return; const d = document.createElement('div'); if (wide) d.className = 'meta-wide'; const dt = document.createElement('dt'); dt.textContent = k; const dd = document.createElement('dd'); dd.textContent = v; d.append(dt, dd); meta.append(d); };
+  const p = exactCoords(card);
+  add('Client / programme', card.dataset.client);
+  add('Role', $('.project-role', card).textContent);
+  add('Location', p ? `${card.dataset.place} · ${latStr(p.lat, false)} ${lonStr(p.lon, false)}` : card.dataset.place);
+  add('Year', $('.project-meta span:last-child', card).textContent.trim());
+  add('Tools', $$('.stack li', card).map(l => l.textContent).join(' · '), true);
+  $('#case-body').replaceChildren($('template', card).content.cloneNode(true));
+  const wrap = $('#case-tile'), src = $('.tile', card);
+  wrap.replaceChildren();
+  if (src.tagName === 'IMG') {
+    const im = src.cloneNode(); im.removeAttribute('loading'); wrap.append(im);
+  } else {
+    const cv = document.createElement('canvas'); cv.className = 'tile'; cv.setAttribute('aria-hidden', 'true');
+    cv.dataset.tile = src.dataset.tile; cv.dataset.seed = src.dataset.seed; wrap.append(cv);
+  }
+  const prev = cards[(i - 1 + cards.length) % cards.length], next = cards[(i + 1) % cards.length];
+  $('#case-prev span').textContent = $('.project-title', prev).textContent;
+  $('#case-next span').textContent = $('.project-title', next).textContent;
+  if (!dlg.open) dlg.showModal();
+  dlg.scrollTop = 0;
+  requestAnimationFrame(() => renderTile($('canvas', wrap)));
+}
+(function projects() {
+  cards.forEach((card, i) => $('.project-open', card).addEventListener('click', () => openCase(i)));
+  $('#case-close').addEventListener('click', () => dlg.close());
+  $('#case-prev').addEventListener('click', () => openCase((currentCase - 1 + cards.length) % cards.length));
+  $('#case-next').addEventListener('click', () => openCase((currentCase + 1) % cards.length));
+  dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+  dlg.addEventListener('close', () => { const c = cards[currentCase]; c && $('.project-open', c).focus({ preventScroll: true }); });
+
+  const btns = $$('.filter'), status = $('#work-status');
+  const matches = (c, f) => f === 'all' || c.dataset.cat.split(' ').includes(f);
+  btns.forEach(b => { $('.n', b).textContent = cards.filter(c => matches(c, b.dataset.filter)).length; });
+  const apply = f => {
+    btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.filter === f)));
+    let shown = 0; cards.forEach(c => { const on = matches(c, f); c.hidden = !on; shown += on; });
+    status.textContent = f === 'all' ? `Showing all ${shown} projects` : `Showing ${shown} of ${cards.length} projects`;
+  };
+  btns.forEach(b => b.addEventListener('click', () => apply(b.dataset.filter)));
+  apply('all');
+})();
+
+/* ───────── Coverage map ───────── */
+(function coverage() {
+  const host = $('#map'), cv = $('#map-canvas'), pinsEl = $('#pins'), list = $('#site-list');
+  const sites = cards.map((c, i) => ({ i, pos: cardCoords(c), title: $('.project-title', c).textContent, place: c.dataset.place }));
+  const pinEls = [], linkEls = [];
+  const hot = (i, on) => { pinEls[i]?.classList.toggle('is-hot', on); linkEls[i]?.classList.toggle('is-hot', on); };
+
+  sites.forEach(s => {
+    const li = document.createElement('li'), b = document.createElement('button');
+    b.type = 'button'; b.className = 'site-link';
+    const a = document.createElement('span'); a.textContent = s.title;
+    const p = document.createElement('span'); p.textContent = s.place;
+    b.append(a, p); li.append(b); list.append(li); linkEls[s.i] = b;
+    b.addEventListener('click', () => openCase(s.i));
+    b.addEventListener('mouseenter', () => hot(s.i, true)); b.addEventListener('mouseleave', () => hot(s.i, false));
+    b.addEventListener('focus', () => hot(s.i, true)); b.addEventListener('blur', () => hot(s.i, false));
+  });
+
+  if (!hasD3 || !window.topojson || !window.WORLD_110M) { host.classList.add('is-missing'); return; }
+  const world = window.WORLD_110M;
+  const feats = topojson.feature(world, world.objects.countries).features;
+  const land = topojson.feature(world, world.objects.land);
+  const served = new Set($$('#country-list li').map(li => li.dataset.ne || li.textContent.trim()));
+  const servedFC = { type: 'FeatureCollection', features: feats.filter(f => served.has(f.properties.name)) };
+  const homeF = feats.find(f => f.properties.name === SITE.home.country);
+  const antarctica = SITE.polarInset ? feats.find(f => f.properties.name === 'Antarctica') : null;
+  const [[w, s], [e, n]] = SITE.mapExtent;
+  const fitObj = { type: 'MultiPoint', coordinates: [[w, s], [e, s], [w, n], [e, n], [(w + e) / 2, s], [(w + e) / 2, n], [w, (s + n) / 2], [e, (s + n) / 2]] };
+
+  function render() {
+    const W = Math.round(host.clientWidth); if (!W) return;
+    const proj = d3.geoEqualEarth().fitWidth(W, fitObj);
+    const b = d3.geoPath(proj).bounds(fitObj);
+    const [tx, ty] = proj.translate(); proj.translate([tx, ty - b[0][1]]);
+    const H = Math.ceil(b[1][1] - b[0][1]);
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    cv.width = W * dpr; cv.height = H * dpr; cv.style.height = H + 'px';
+    const ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+
+    // Antarctica sits in a south-polar inset over the empty South Atlantic, bottom left
+    let inset = null;
+    if (antarctica) {
+      const iw = Math.round(W * .36), ih = Math.round(iw * .8);
+      const ix = Math.round(W * .025), iy = Math.round(H - ih - W * .025);
+      const ip = d3.geoAzimuthalEqualArea().rotate([0, 90]).fitExtent([[ix + 14, iy + 18], [ix + iw - 14, iy + ih - 26]], antarctica);
+      inset = { x: ix, y: iy, w: iw, h: ih, proj: ip };
+    }
+    const inInset = (x, y) => inset && x >= inset.x && x <= inset.x + inset.w && y >= inset.y && y <= inset.y + inset.h;
+
+    const mask = (obj, pr, clip) => {
+      const off = document.createElement('canvas'); off.width = W; off.height = H;
+      const o = off.getContext('2d', { willReadFrequently: true }); o.fillStyle = '#fff';
+      if (clip) { o.beginPath(); o.rect(clip.x, clip.y, clip.w, clip.h); o.clip(); }
+      o.beginPath(); d3.geoPath(pr, o)(obj); o.fill(); return o.getImageData(0, 0, W, H).data;
+    };
+    const mLand = mask(land, proj), mServed = mask(servedFC, proj), mHome = homeF ? mask(homeF, proj) : null;
+    const iLand = inset ? mask(land, inset.proj, inset) : null, iServed = inset ? mask(servedFC, inset.proj, inset) : null;
+
+    ctx.beginPath(); d3.geoPath(proj, ctx)(d3.geoGraticule().step([10, 10])());
+    ctx.strokeStyle = css('--rule'); ctx.lineWidth = .7; ctx.stroke();
+    if (inset) {
+      ctx.fillStyle = css('--panel'); ctx.fillRect(inset.x, inset.y, inset.w, inset.h);
+      ctx.save(); ctx.beginPath(); ctx.rect(inset.x, inset.y, inset.w, inset.h); ctx.clip();
+      ctx.beginPath(); d3.geoPath(inset.proj, ctx)(d3.geoGraticule().step([30, 10]).extentMinor([[-180, -90], [180, -50]])());
+      ctx.strokeStyle = css('--rule'); ctx.stroke(); ctx.restore();
+    }
+
+    const S = W < 520 ? 5 : W < 820 ? 6 : 7, rad = S * .36;
+    const pLand = new Path2D(), pServed = new Path2D(), pHome = new Path2D();
+    for (let y = S / 2; y < H; y += S) for (let x = S / 2; x < W; x += S) {
+      const k = (Math.floor(y) * W + Math.floor(x)) * 4 + 3;
+      const ins = inInset(x, y);
+      const L = ins ? iLand : mLand, Sv = ins ? iServed : mServed, Hm = ins ? null : mHome;
+      if (L[k] < 110) continue;
+      const target = Hm && Hm[k] > 110 ? pHome : Sv[k] > 110 ? pServed : pLand;
+      target.moveTo(x + rad, y); target.arc(x, y, rad, 0, Math.PI * 2);
+    }
+    ctx.fillStyle = css('--dot'); ctx.fill(pLand);
+    ctx.fillStyle = css('--accent'); ctx.globalAlpha = .62; ctx.fill(pServed); ctx.globalAlpha = 1; ctx.fill(pHome);
+    if (inset) { ctx.strokeStyle = css('--rule-2'); ctx.lineWidth = 1; ctx.strokeRect(inset.x + .5, inset.y + .5, inset.w - 1, inset.h - 1); }
+
+    const ppd = Math.abs(proj([1, 0])[0] - proj([0, 0])[0]);
+    $('#dot-km').textContent = Math.round(S * 111.32 / ppd / 5) * 5;
+
+    pinsEl.replaceChildren();
+    const hp = proj([SITE.home.lon, SITE.home.lat]);
+    if (hp) {
+      const m = document.createElement('div'); m.className = 'home-mark';
+      m.style.left = (hp[0] / W * 100) + '%'; m.style.top = (hp[1] / H * 100) + '%';
+      const l = document.createElement('span'); l.textContent = SITE.home.label; m.append(l); pinsEl.append(m);
+    }
+    if (inset) {
+      const lab = document.createElement('div'); lab.className = 'inset-label';
+      lab.style.left = ((inset.x + 10) / W * 100) + '%'; lab.style.top = ((inset.y + inset.h - 17) / H * 100) + '%';
+      lab.textContent = W < 560 ? 'Inset · Antarctica' : 'Inset · Antarctica, polar view'; pinsEl.append(lab);
+    }
+    sites.forEach(st => {
+      if (!st.pos) return;
+      const pr = inset && st.pos.lat < -60 ? inset.proj : proj;
+      const p = pr([st.pos.lon, st.pos.lat]); if (!p || p[0] < 0 || p[0] > W || p[1] < 0 || p[1] > H) return;
+      const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'pin';
+      if (p[0] > W - 130) btn.classList.add('edge-r'); else if (p[0] < 130) btn.classList.add('edge-l');
+      btn.style.left = (p[0] / W * 100) + '%'; btn.style.top = (p[1] / H * 100) + '%';
+      btn.setAttribute('aria-label', `${st.title}, ${st.place}. Open case study`);
+      const lab = document.createElement('span'); lab.className = 'pin-label'; lab.setAttribute('aria-hidden', 'true');
+      lab.textContent = st.title; const sm = document.createElement('small'); sm.textContent = st.place; lab.append(sm);
+      btn.append(lab); pinsEl.append(btn); pinEls[st.i] = btn;
+      btn.addEventListener('click', () => openCase(st.i));
+      btn.addEventListener('mouseenter', () => hot(st.i, true)); btn.addEventListener('mouseleave', () => hot(st.i, false));
+    });
+  }
+  let rt, lastW = host.clientWidth;
+  render();
+  new ResizeObserver(() => { const wd = host.clientWidth; if (wd === lastW) return; lastW = wd; clearTimeout(rt); rt = setTimeout(render, 80); }).observe(host);
+  document.addEventListener('themechange', render);
+})();
+
+/* ───────── Experience timeline ───────── */
+(function timeline() {
+  const roles = $$('.role'), host = $('#tl'); if (!roles.length || !host) return;
+  const now = new Date();
+  const parse = v => { if (!v) return now; const [y, m] = v.split('-').map(Number); return new Date(y, m - 1, 1); };
+  const spansOf = r => (r.dataset.spans || `${r.dataset.start}:${r.dataset.end || ''}`)
+    .split(',').map(s => { const [a, b] = s.split(':'); return { start: parse(a), end: parse(b), open: !b }; });
+  const items = roles.map(r => ({ el: r, spans: spansOf(r), title: $('h3', r).textContent, org: r.dataset.short || '' }));
+  items.forEach(it => {
+    const months = it.spans.reduce((sum, s) => sum + (s.end.getFullYear() - s.start.getFullYear()) * 12 + (s.end.getMonth() - s.start.getMonth()) + 1, 0);
+    const y = Math.floor(months / 12), m = months % 12;
+    const out = $('[data-duration]', it.el);
+    if (out) out.textContent = [y ? `${y} yr${y > 1 ? 's' : ''}` : '', m ? `${m} mo${m > 1 ? 's' : ''}` : ''].filter(Boolean).join(' ');
+  });
+  const all = items.flatMap(it => it.spans);
+  const y0 = Math.min(...all.map(s => s.start.getFullYear())), y1 = Math.max(...all.map(s => s.end.getFullYear())) + 1;
+  const t0 = new Date(y0, 0, 1).getTime(), t1 = new Date(y1, 0, 1).getTime();
+  const pct = d => ((d.getTime() - t0) / (t1 - t0) * 100).toFixed(3) + '%';
+  const endOfMonth = d => new Date(d.getFullYear(), d.getMonth() + 1, 1);
+  const inner = document.createElement('div'); inner.className = 'tl-inner';
+  const grid = document.createElement('div'); grid.className = 'tl-grid';
+  [...items].reverse().forEach((it, idx, arr) => {
+    const row = document.createElement('div'); row.className = 'tl-row';
+    const lab = document.createElement('div'); lab.className = 'tl-label'; lab.textContent = it.title;
+    const sm = document.createElement('small'); sm.textContent = it.org; lab.append(sm);
+    const track = document.createElement('div'); track.className = 'tl-track';
+    it.spans.forEach(s => {
+      const bar = document.createElement('span');
+      bar.className = 'tl-bar' + (s.open ? ' is-current' : idx === arr.length - 1 ? ' is-latest' : '');
+      bar.style.left = pct(s.start); bar.style.width = `calc(${pct(endOfMonth(s.end))} - ${pct(s.start)})`;
+      track.append(bar);
+    });
+    row.append(lab, track); inner.append(row);
+  });
+  const axisRow = document.createElement('div'); axisRow.className = 'tl-row';
+  const axis = document.createElement('div'); axis.className = 'tl-axis';
+  for (let y = y0; y <= y1; y++) {
+    const at = pct(new Date(y, 0, 1));
+    const lab = document.createElement('span'); lab.className = 'tl-year'; lab.style.left = at; lab.textContent = y; axis.append(lab);
+    const line = document.createElement('i'); line.style.left = at; grid.append(line);
+  }
+  axisRow.append(document.createElement('span'), axis); inner.append(axisRow);
+  inner.prepend(grid);
+  host.append(inner);
+})();
+
+/* ───────── Project register + WIL chart ───────── */
+(function register() {
+  const list = $('#reg-list'), more = $('#reg-more'); if (!list) return;
+  const rows = $$('.reg-row', list);
+  $('.register-count span').textContent = rows.length;
+  if (rows.length > 8) {
+    list.classList.add('is-collapsed'); more.textContent = `Show all ${rows.length} jobs`;
+    more.addEventListener('click', () => {
+      const open = list.classList.toggle('is-collapsed') === false;
+      more.setAttribute('aria-expanded', String(open));
+      more.textContent = open ? 'Show fewer' : `Show all ${rows.length} jobs`;
+    });
+  } else more.hidden = true;
+  $$('.reg-case', list).forEach(b => b.addEventListener('click', () => {
+    const i = cards.findIndex(c => c.id === b.dataset.case); if (i > -1) openCase(i);
+  }));
+})();
+(function wilChart() {
+  const fig = $('#wil'), tip = $('#wil-tip'); if (!fig || !tip) return;
+  $$('.wil-row', fig).forEach(row => {
+    const days = +row.dataset.days, min = row.dataset.min ? +row.dataset.min : null, name = $('th', row).textContent;
+    row.addEventListener('pointermove', e => {
+      tip.replaceChildren();
+      const t = document.createElement('div'); t.textContent = name;
+      const v = document.createElement('div'); const b = document.createElement('b'); b.textContent = `${days} days`;
+      v.append(b, min ? ` logged · minimum ${min} (${(days / min).toFixed(1)}×)` : ' logged · additional training');
+      tip.append(t, v); tip.hidden = false;
+      const fr = fig.getBoundingClientRect(), x = e.clientX - fr.left, y = e.clientY - fr.top;
+      tip.style.left = Math.max(8, Math.min(fr.width - tip.offsetWidth - 8, x + 14)) + 'px';
+      tip.style.top = (y + 16) + 'px';
+    });
+    row.addEventListener('pointerleave', () => { tip.hidden = true; });
+  });
+})();
+
+/* ───────── Contact ───────── */
+(function contact() {
+  const copy = $('#copy-email'), text = $('#email-text');
+  copy.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(SITE.email); copy.textContent = 'Copied'; copy.dataset.state = 'copied'; }
+    catch (e) { const r = document.createRange(); r.selectNodeContents(text); const s = getSelection(); s.removeAllRanges(); s.addRange(r); copy.textContent = 'Selected, press Ctrl+C'; }
+    setTimeout(() => { copy.textContent = 'Copy address'; delete copy.dataset.state; }, 2200);
+  });
+
+  const form = $('#contact-form'), status = $('#form-status'), submit = $('#f-submit');
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    status.removeAttribute('data-tone');
+    if (!form.checkValidity()) {
+      const bad = $$('input, textarea', form).find(el => !el.checkValidity());
+      status.textContent = bad?.type === 'email' && bad.value ? 'That email address looks incomplete. Check it and try again.' : 'Add your name, email and a short message, then send.';
+      bad?.focus(); return;
+    }
+    const d = Object.fromEntries(new FormData(form));
+    if (SITE.formEndpoint) {
+      submit.disabled = true; status.textContent = 'Sending…';
+      try {
+        const r = await fetch(SITE.formEndpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(d) });
+        if (!r.ok) throw new Error(`error ${r.status}`);
+        form.reset(); status.dataset.tone = 'ok';
+        status.textContent = `Message sent. I'll reply to ${d.email}.`;
+      } catch (err) {
+        status.textContent = `The message didn't send (${err.message}). Email me directly at ${SITE.email}.`;
+      } finally { submit.disabled = false; }
+      return;
+    }
+    const subject = `${d.topic}: message from ${d.name}`;
+    const body = `${d.message}\n\n${d.name}\n${d.email}`;
+    window.location.href = `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    status.textContent = 'Your email app should open with this message ready to send. If nothing opened, copy my address above and email me directly.';
+  });
+})();
+</script>
+</body>
+</html>
