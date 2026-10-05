@@ -662,7 +662,7 @@ img.tile{object-fit:cover}
     <ul>
       <li><a href="#about">About <span>Who I am</span></a></li>
       <li><a href="#toolbox">Toolbox <span>Software &amp; kit</span></a></li>
-      <li><a href="#work">Work <span>8 projects</span></a></li>
+      <li><a href="#work">Work <span>10 projects</span></a></li>
       <li><a href="#coverage">Coverage <span>Map</span></a></li>
       <li><a href="#experience">Experience <span>Roles</span></a></li>
       <li><a href="#education">Education <span>Licences</span></a></li>
@@ -779,11 +779,11 @@ img.tile{object-fit:cover}
         <li class="layer" style="--sw:var(--hyp-2)"><span class="swatch" aria-hidden="true"></span><div class="layer-name"><h3>CAD, drafting &amp; BIM</h3><span class="count"></span></div>
           <ul class="chips"><li>AutoCAD</li><li>BricsCAD + LISP</li><li>BIM workflows</li><li>Bentley MicroStation</li><li>Bentley Map</li></ul></li>
         <li class="layer" style="--sw:var(--hyp-3)"><span class="swatch" aria-hidden="true"></span><div class="layer-name"><h3>GIS &amp; spatial analysis</h3><span class="count"></span></div>
-          <ul class="chips"><li>ArcGIS Pro</li><li>QGIS</li><li>Global Mapper</li><li>SQL</li><li>Network analysis</li><li>Hotspot mapping</li><li>IDW &amp; Kriging</li><li>Topology validation</li></ul></li>
+          <ul class="chips"><li>ArcGIS Pro</li><li>QGIS</li><li>Global Mapper</li><li>SQL</li><li>Network analysis</li><li>Hotspot mapping</li><li>IDW, Spline &amp; Kriging</li><li>Cartography</li><li>WMS / OGC services</li><li>Topology validation</li></ul></li>
         <li class="layer" style="--sw:var(--hyp-4)"><span class="swatch" aria-hidden="true"></span><div class="layer-name"><h3>Code &amp; data</h3><span class="count"></span></div>
-          <ul class="chips"><li>Python</li><li>rasterio</li><li>GDAL / OGR</li><li>NumPy</li><li>SciPy</li><li>scikit-learn</li><li>openpyxl</li><li>segyio</li><li>PDAL</li><li>R</li><li>Java</li></ul></li>
+          <ul class="chips"><li>Python</li><li>ArcPy</li><li>rasterio</li><li>GDAL / OGR</li><li>NumPy</li><li>SciPy</li><li>scikit-learn</li><li>openpyxl</li><li>segyio</li><li>PDAL</li><li>R</li><li>Java</li></ul></li>
         <li class="layer" style="--sw:var(--hyp-5)"><span class="swatch" aria-hidden="true"></span><div class="layer-name"><h3>Remote sensing</h3><span class="count"></span></div>
-          <ul class="chips"><li>Google Earth Engine</li><li>Change analysis</li><li>NDVI · MSAVI · red-edge NDVI</li><li>Radiometric correction</li><li>Orthomosaics</li><li>Watershed segmentation</li></ul></li>
+          <ul class="chips"><li>Google Earth Engine</li><li>Change analysis</li><li>SAR &amp; radar</li><li>Machine learning for EO</li><li>NDVI · MSAVI · red-edge NDVI</li><li>Radiometric correction</li><li>Orthomosaics</li><li>Watershed segmentation</li></ul></li>
         <li class="layer" style="--sw:var(--hyp-6)"><span class="swatch" aria-hidden="true"></span><div class="layer-name"><h3>Point clouds &amp; photogrammetry</h3><span class="count"></span></div>
           <ul class="chips"><li>Leica Cyclone</li><li>Terrasolid TerraScan</li><li>TerraModeler</li><li>Agisoft Metashape</li><li>Pix4D</li><li>FJD Trion Model</li><li>Trimble Business Centre</li></ul></li>
         <li class="layer" style="--sw:var(--hyp-7)"><span class="swatch" aria-hidden="true"></span><div class="layer-name"><h3>Field capture</h3><span class="count"></span></div>
@@ -816,7 +816,7 @@ img.tile{object-fit:cover}
             <p class="project-meta"><span>UAV survey · Geophysics</span><span>2026</span></p>
             <h3 class="project-title">Crevasse detection with drone-borne radar</h3>
             <p class="project-role">Pilot in command · Researcher</p>
-            <p class="project-sum">Drone-mounted ground-penetrating radar surveys on the Fimbul Ice Shelf to detect hidden crevasses. I ran the campaign from equipment checks in Cape Town to flights on the ice.</p>
+            <p class="project-sum">Drone-mounted ground-penetrating radar over a basal-crevasse junction on the Fimbul Ice Shelf, imaging the ice down to the ocean at about 190 m. I ran the campaign from equipment checks in Cape Town to flights on the ice.</p>
             <p class="project-impact"><strong>47.2 line-km</strong>of radar profiles over four survey flights</p>
             <dl class="project-facts">
               <div><dt>Platform</dt><dd>DJI M350 RTK</dd></div>
@@ -830,13 +830,16 @@ img.tile{object-fit:cover}
           <template>
             <h3>Context</h3>
             <p>My MScEng thesis, supervised by Dr Moreblessing Shoko, develops automated detection of hidden crevasses in ground-penetrating radar data. I collected the data myself as a member of the SANAE 65 expedition with the South African National Antarctic Programme.</p>
+            <figure><img src="assets/fimbul-overview-map.jpg" alt="Map of the Fimbul Ice Shelf showing the SANAS study area and the airborne radio echo sounding survey area" loading="lazy"><figcaption>Expedition overview map of the Fimbul Ice Shelf (Fimbulisen): the SANAS study area at the ice front and the airborne radio-echo-sounding survey area.</figcaption></figure>
             <h3>Preparation · Nov – Dec 2025</h3>
             <ul>
               <li>Ran full equipment-readiness checks, and verified the drone and GPR payload were serviced and calibrated to spec, including test-flight data collection.</li>
               <li>Wrote standard operating procedures for drone flight operations, and designed and issued data logbooks to every team to standardise field logging.</li>
               <li>Prepared the GIS data loaded onto Garmin GPS units, so camps were placed clear of hazards and travel routes reached the areas of interest.</li>
               <li>Designed survey lines in Antarctic Polar Stereographic (EPSG:3031), converted them to KML for UgCS, and worked with SPH Engineering on coordinate compatibility and trace-spacing calibration.</li>
+              <li>Targeted a basal-crevasse T-intersection, where longitudinal and lateral fractures are expected to meet, with a nested design: a wide grid of about 1.6 × 1.2 km for regional context and a tight 400 × 400 m grid at 25 m line spacing over the intersection.</li>
             </ul>
+            <figure><img src="assets/gpr-flight-plan.jpg" alt="Flight planning map of the crevasse T-intersection area of interest with the wide and tight survey grids over known and hidden crevasses" loading="lazy"><figcaption>My flight-planning map: the T-intersection area of interest, with the wide grid and the tight grid drawn over known (solid) and hidden (dashed) crevasses.</figcaption></figure>
             <figure><img src="assets/ugcs-test-plan.jpg" alt="UgCS area scan plan for the Matrice 350 RTK test flight at Contermanskloof" loading="lazy"><figcaption>Pre-deployment test flight at Contermanskloof, Cape Town, 14 November 2025: UgCS area scan at 3 m and 5 m/s, 5 m line spacing, rangefinder altitude mode.</figcaption></figure>
             <h3>On the ice · Jan – Feb 2026</h3>
             <ul>
@@ -851,8 +854,11 @@ img.tile{object-fit:cover}
               <li>Built a Python pipeline for the radar data: dewow, time-zero correction, background removal, bandpass filtering, gain (SEC/AGC) and time-to-depth conversion.</li>
               <li>Georeferenced every radar trace by joining the SkyHub WGS84 position log to the SEG-Y trace record.</li>
             </ul>
+            <h3>First results</h3>
+            <p>Preliminary raw data shows strong signal penetration to the ice–ocean interface at about 190 m depth. The radargrams already resolve fracture signatures: a basal opening at the bottom of the shelf, a hyperbolic diffraction from upward fracture propagation, and depressions in the surface layers above it.</p>
+            <figure><img src="assets/gpr-radargram.jpg" alt="Annotated GPR radargram showing surface depressions, a basal crevasse diffraction hyperbola and a basal opening at about 190 metres depth" loading="lazy"><figcaption>Annotated raw radargram from the survey, written up for the SANAP cruise report: surface depressions (green), basal crevasse diffraction (red) and the basal opening at the ice–ocean interface (yellow).</figcaption></figure>
             <h3>Outcome</h3>
-            <p>47.2 line-km of georeferenced radar profiles across the survey grids. Automated crevasse detection is the subject of my MSc, which is in progress.</p>
+            <p>47.2 line-km of georeferenced radar profiles across the survey grids, with the focused grid flown at both 100 and 150 MHz. Full processing and automated crevasse detection are the subject of my MSc, which is in progress.</p>
           </template>
         </article>
 
@@ -932,7 +938,7 @@ img.tile{object-fit:cover}
         </article>
 
         <article class="project" id="p-robben" data-cat="gis" data-lat="-33.806" data-lon="18.366" data-place="Robben Island, Cape Town" data-client="Work-Integrated Learning task">
-          <div class="project-tile"><canvas class="tile" data-tile="island" data-seed="33" aria-hidden="true"></canvas><span class="tile-tag"></span></div>
+          <div class="project-tile"><img class="tile" src="assets/robben-island-tile.jpg" alt="Detail of the Robben Island 1:10 000 topographic map" loading="lazy"><span class="tile-tag"></span></div>
           <div class="project-body">
             <p class="project-meta"><span>Cartography</span><span>2025</span></p>
             <h3 class="project-title">Robben Island topographic map</h3>
@@ -949,7 +955,65 @@ img.tile{object-fit:cover}
             <ul>
               <li>Built the feature classes from the latest orthoimagery and CD:NGI portal data.</li>
               <li>Digitised and classified the coastline, coastal rocks, beach, roads by class, buildings, vegetation and points of interest.</li>
+              <li>Set it on the Gauss Conform projection, Hartebeesthoek94 datum, with 5 m contours, a 1:225 000 locator inset, and heights in metres above mean sea level.</li>
               <li>Delivered a print-ready PDF map and an online web map.</li>
+            </ul>
+            <figure><img src="assets/robben-island-map.jpg" alt="The full Robben Island 1:10 000 topographic map sheet" loading="lazy"><figcaption>The finished 1:10 000 sheet, July 2025.</figcaption></figure>
+          </template>
+        </article>
+
+        <article class="project" id="p-interp" data-cat="gis rs" data-place="CD:NGI elevation data" data-client="Work-Integrated Learning task">
+          <div class="project-tile"><img class="tile" src="assets/interpolation-tile.jpg" alt="Kriging elevation surface with contours" loading="lazy"><span class="tile-tag"></span></div>
+          <div class="project-body">
+            <p class="project-meta"><span>Spatial statistics</span><span>2025</span></p>
+            <h3 class="project-title">IDW vs Spline vs Kriging</h3>
+            <p class="project-role">Surface modelling &amp; interpolation</p>
+            <p class="project-sum">Three elevation surfaces built from the same 650 spot heights, tested against LiDAR contours to see which interpolator tells the truth.</p>
+            <p class="project-impact"><strong>650</strong>spot heights over 193 km², about 0.55 km apart</p>
+            <ul class="stack"><li>ArcGIS Pro</li><li>IDW</li><li>Spline (tension)</li><li>Ordinary Kriging</li><li>Moran's I</li></ul>
+            <button class="project-open" type="button">Read case study <span class="arr" aria-hidden="true">→</span></button>
+          </div>
+          <template>
+            <h3>Context</h3>
+            <p>A Work-Integrated Learning practical in October and November 2025 on contours, surface modelling, spatial statistics and interpolation, using CD:NGI elevation data.</p>
+            <h3>What I did</h3>
+            <ul>
+              <li>Generated contours, a slope raster and a hillshade in ArcGIS Pro from CD:NGI elevation data, and mapped each output.</li>
+              <li>Built three surfaces from 650 CD:NGI spot heights over 193 km² (about 3.4 points per km²) with IDW, Spline (tension) and Ordinary Kriging (spherical), using the same colour ramp and cell size so they compare fairly.</li>
+              <li>Checked spatial autocorrelation with Moran's I and compared each surface against LiDAR-derived contours.</li>
+            </ul>
+            <figure><img src="assets/interpolation-compare.jpg" alt="Spline, Kriging and IDW elevation maps with contours" loading="lazy"><figcaption>The three surfaces with contours over imagery, on matching classes.</figcaption></figure>
+            <h3>Findings</h3>
+            <p>IDW matched the LiDAR contours most closely, Spline came second and Kriging was least aligned. IDW weights nearby points strongly and keeps local detail, while Kriging's predictions need not pass through the samples. I wrote up how point density, neighbourhood parameters, the vertical datum and abrupt terrain breaks each add uncertainty.</p>
+          </template>
+        </article>
+
+        <article class="project" id="p-drive" data-cat="gis" data-place="Cape Town" data-client="Work-Integrated Learning task">
+          <div class="project-tile"><img class="tile" src="assets/cape-town-drive-routes.jpg" alt="Map of ten monitored driving routes across Cape Town" style="object-position:45% 40%" loading="lazy"><span class="tile-tag"></span></div>
+          <div class="project-body">
+            <p class="project-meta"><span>Fieldwork · Statistics</span><span>2025</span></p>
+            <h3 class="project-title">How long does Cape Town really take?</h3>
+            <p class="project-role">Data collection &amp; analysis</p>
+            <p class="project-sum">Google's travel-time estimates tested on foot and tracked for ten driving routes, three times a day for ten days.</p>
+            <p class="project-impact"><strong>3.2×</strong>longer from the airport to the CBD at morning peak than at noon</p>
+            <ul class="stack"><li>GPS</li><li>Google Maps</li><li>ArcGIS Pro</li><li>Normalised travel time</li></ul>
+            <button class="project-open" type="button">Read case study <span class="arr" aria-hidden="true">→</span></button>
+          </div>
+          <template>
+            <h3>Context</h3>
+            <p>A Work-Integrated Learning task from July to August 2025 on how well Google's travel-time estimates match reality across Cape Town.</p>
+            <h3>What I did</h3>
+            <ul>
+              <li>Walked five routes with a GPS and a stopwatch and worked out the percentage difference from Google's predicted walking time and distance.</li>
+              <li>Recorded Google's driving estimates for ten commuter routes in the morning, at noon and in the late afternoon over ten days.</li>
+              <li>Measured each route in ArcGIS Pro and normalised the times to minutes per kilometre, so routes of different lengths compare fairly, then mapped drive-time efficiency across the network.</li>
+            </ul>
+            <figure><img src="assets/cape-town-drive-routes.jpg" alt="Map of the ten monitored driving routes" loading="lazy"><figcaption>The ten monitored driving routes.</figcaption></figure>
+            <h3>Findings</h3>
+            <ul>
+              <li>Cape Town International Airport to Golden Acre averaged 54.1 minutes in the morning against 17.1 at noon.</li>
+              <li>Site C, Khayelitsha to the city centre averaged 60.3 minutes in the morning against 24.7 in the afternoon.</li>
+              <li>Bellville station to the city centre averaged 49.5 minutes in the morning against 25.0 at noon.</li>
             </ul>
           </template>
         </article>
@@ -1068,9 +1132,9 @@ img.tile{object-fit:cover}
           <li class="reg-row"><span class="reg-when">Mar 2026</span><div class="reg-site"><strong>Private residence</strong><span>Camps Bay</span></div><p class="reg-work">Interior and exterior scans with a Leica BLK360, then point-cloud registration.</p><span class="reg-tag">TLS</span></li>
           <li class="reg-row"><span class="reg-when">Jan – Feb 2026</span><div class="reg-site"><strong>SANAE 65 field season</strong><span>Fimbul Ice Shelf, Antarctica</span></div><p class="reg-work">Ran the project's ArcGIS environment and weekly team coordination, then flew the GPR survey.</p><button class="reg-case" type="button" data-case="p-gpr">Case study →</button></li>
           <li class="reg-row"><span class="reg-when">Nov – Dec 2025</span><div class="reg-site"><strong>Antarctic pre-deployment</strong><span>Cape Town</span></div><p class="reg-work">Equipment readiness and calibration checks, flight SOPs, team data logbooks, and GIS data for hazard-aware GPS navigation.</p><button class="reg-case" type="button" data-case="p-gpr">Case study →</button></li>
-          <li class="reg-row"><span class="reg-when">Oct – Nov 2025</span><div class="reg-site"><strong>Surface modelling &amp; interpolation</strong><span>CD:NGI elevation data</span></div><p class="reg-work">Contours, slope and hillshade in ArcGIS Pro; IDW and Kriging compared on spot heights at the same cell size and colour ramp; spatial autocorrelation with Moran's I.</p><span class="reg-tag">Spatial statistics</span></li>
+          <li class="reg-row"><span class="reg-when">Oct – Nov 2025</span><div class="reg-site"><strong>Surface modelling &amp; interpolation</strong><span>CD:NGI elevation data</span></div><p class="reg-work">Contours, slope and hillshade in ArcGIS Pro; IDW, Spline and Kriging compared on 650 spot heights; spatial autocorrelation with Moran's I.</p><button class="reg-case" type="button" data-case="p-interp">Case study →</button></li>
           <li class="reg-row"><span class="reg-when">Aug – Oct 2025</span><div class="reg-site"><strong>Safest routes to campus</strong><span>Observatory to Claremont, Cape Town</span></div><p class="reg-work">Field-scored transport nodes, a Route Safety Index, hotspot mapping and network analysis.</p><button class="reg-case" type="button" data-case="p-routes">Case study →</button></li>
-          <li class="reg-row"><span class="reg-when">Jul – Aug 2025</span><div class="reg-site"><strong>Google Maps timing study</strong><span>Cape Town</span></div><p class="reg-work">Walked five routes with GPS and a stopwatch against Google's estimates, tracked driving estimates for ten routes three times a day over ten days, and mapped the variance.</p><span class="reg-tag">Fieldwork · Statistics</span></li>
+          <li class="reg-row"><span class="reg-when">Jul – Aug 2025</span><div class="reg-site"><strong>Google Maps timing study</strong><span>Cape Town</span></div><p class="reg-work">Walked five routes with GPS and a stopwatch against Google's estimates, tracked driving estimates for ten routes three times a day over ten days, and mapped the variance.</p><button class="reg-case" type="button" data-case="p-drive">Case study →</button></li>
           <li class="reg-row"><span class="reg-when">Jul 2025</span><div class="reg-site"><strong>Robben Island topographic map</strong><span>Cape Town</span></div><p class="reg-work">A 1:10 000 map in the style of the national 1:50 000 series, as a print PDF and a web map.</p><button class="reg-case" type="button" data-case="p-robben">Case study →</button></li>
         </ol>
         <button class="btn btn-line reg-more" id="reg-more" type="button" aria-expanded="false" aria-controls="reg-list">Show all 22 jobs</button>
@@ -1288,6 +1352,29 @@ img.tile{object-fit:cover}
             </ul>
           </div>
           <div>
+            <h3 class="col-head">Research, writing &amp; ventures</h3>
+            <ul class="entries">
+              <li class="entry">
+                <span class="entry-when">2026</span>
+                <h3>Contribution to the SANAP cruise report</h3>
+                <p class="entry-org">South African National Antarctic Programme · 2025/26 campaign</p>
+                <p class="entry-note">Wrote up the drone GPR survey design and first results, including the annotated radargram of the crevasse T-intersection.</p>
+              </li>
+              <li class="entry">
+                <span class="entry-when">2025</span>
+                <h3>A Geospatial Foundation for a Digital Future</h3>
+                <p class="entry-org">Policy paper · Integrating Building Information Modelling into South African national legislation</p>
+                <p class="entry-note">Argues for a phased national BIM mandate built on NGI's geospatial data and the SANS 19650 standards, drawing on mandates in Germany, Dubai and Singapore, with a national digital twin as the goal.</p>
+              </li>
+              <li class="entry">
+                <span class="entry-when">2025</span>
+                <h3>Farm Eye</h3>
+                <p class="entry-org">Agritech venture · business and strategic plan</p>
+                <p class="entry-note">A drone-based multispectral crop-monitoring service for small and medium farms in the Western Cape, starting with wine and table grapes. It builds on my vine-health thesis and delivers results through dashboards and WhatsApp reports.</p>
+              </li>
+            </ul>
+          </div>
+          <div>
             <h3 class="col-head">Awards</h3>
             <ul class="entries compact">
               <li class="entry"><span class="entry-when">2023</span><h3>Engineers Without Borders Bronze Medal, for more than 35 volunteer hours</h3></li>
@@ -1322,6 +1409,14 @@ img.tile{object-fit:cover}
                 <h3>Registered Professional</h3>
                 <p class="entry-org">Botswana Institute of Geomatics</p>
               </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="col-head">Courses &amp; certificates</h3>
+            <ul class="entries compact">
+              <li class="entry"><span class="entry-when">2025</span><h3>Python Scripting: Modifying Layer Properties · Esri Training</h3></li>
+              <li class="entry"><span class="entry-when">2025</span><h3>Introduction to Machine Learning for Earth Observation · EO College</h3></li>
+              <li class="entry"><span class="entry-when">2024</span><h3>Echoes in Space: radar remote sensing · EO College</h3></li>
             </ul>
           </div>
           <div>
