@@ -692,8 +692,8 @@ img.tile{object-fit:cover}
     <div class="wrap hero-collar">
       <dl class="collar-stats">
         <div><dt>UAV radar lines flown over Antarctic ice</dt><dd>47.2 km</dd></div>
-        <div><dt>Trees mapped from airborne LiDAR</dt><dd>435</dd></div>
-        <div><dt>Farm portions in one due-diligence viewer</dt><dd>62</dd></div>
+        <div><dt>Scanner setups planned for one building</dt><dd>~138</dd></div>
+        <div><dt>Vineyard flown with a multispectral drone</dt><dd>8.4 ha</dd></div>
       </dl>
       <p class="collar-readout" aria-hidden="true">
         <span><b>Cursor</b><span id="ro-coord">26°12′15″S 28°02′50″E</span></span>
@@ -859,56 +859,6 @@ img.tile{object-fit:cover}
             <figure><img src="assets/gpr-radargram.jpg" alt="Annotated GPR radargram showing surface depressions, a basal crevasse diffraction hyperbola and a basal opening at about 190 metres depth" loading="lazy"><figcaption>Annotated raw radargram from the survey, written up for the SANAP cruise report: surface depressions (green), basal crevasse diffraction (red) and the basal opening at the ice–ocean interface (yellow).</figcaption></figure>
             <h3>Outcome</h3>
             <p>47.2 line-km of georeferenced radar profiles across the survey grids, with the focused grid flown at both 100 and 150 MHz. Full processing and automated crevasse detection are the subject of my MSc, which is in progress.</p>
-          </template>
-        </article>
-
-        <article class="project" id="p-tenure" data-cat="gis" data-lat="-28.7" data-lon="30.6" data-approx data-place="KwaZulu-Natal, South Africa" data-client="Mining-right due diligence at 5D Geo">
-          <div class="project-tile"><canvas class="tile" data-tile="parcels" data-seed="73" aria-hidden="true"></canvas><span class="tile-tag"></span></div>
-          <div class="project-body">
-            <p class="project-meta"><span>GIS · Web mapping</span><span>2026</span></p>
-            <h3 class="project-title">Land-tenure due diligence for a mining right</h3>
-            <p class="project-role">GIS analyst &amp; developer</p>
-            <p class="project-sum">A tenure database and a live web GIS viewer that answer due-diligence trigger questions, portion by portion, for farms inside and around a mining right.</p>
-            <p class="project-impact"><strong>62</strong>farm portions mapped and flagged in one viewer</p>
-            <ul class="stack"><li>GIS database</li><li>Leaflet</li><li>GitHub Pages</li><li>Surveyor-General data</li></ul>
-            <button class="project-open" type="button">Read case study <span class="arr" aria-hidden="true">→</span></button>
-          </div>
-          <template>
-            <h3>Context</h3>
-            <p>A due-diligence assessment under IPILRA (the Interim Protection of Informal Land Rights Act) for farm portions inside and next to a mining right in KwaZulu-Natal. Each portion has to answer a checklist of trigger questions, for example about informal occupation, graves, historical trust or state ownership, and customary rights.</p>
-            <h3>What I did</h3>
-            <ul>
-              <li>Helped get the project off the ground: put together the first GIS database schema linking farm portions, title deeds and subdivision history, and worked on the initial project plan and proposal (feasibility, risk register, requirements) that went to the client.</li>
-              <li>Ran queries on the farm-portion database to answer the trigger questions.</li>
-              <li>Built and launched a web GIS viewer in Leaflet, hosted on GitHub Pages over a satellite basemap, with trigger-question layers, year highlighting and per-portion information with a Surveyor-General data lookup.</li>
-              <li>Flagged occupation, cultivation, graveyards and community claims on each portion, and checked the trigger-question maps against the property lists.</li>
-            </ul>
-          </template>
-        </article>
-
-        <article class="project" id="p-trees" data-cat="lidar rs" data-lat="-2.3" data-lon="34.8" data-approx data-place="Pungume Island &amp; Serengeti, Tanzania" data-client="Lodge developments, processed at 5D Geo">
-          <div class="project-tile"><canvas class="tile" data-tile="trees" data-seed="41" aria-hidden="true"></canvas><span class="tile-tag"></span></div>
-          <div class="project-body">
-            <p class="project-meta"><span>LiDAR · Remote sensing</span><span>2026</span></p>
-            <h3 class="project-title">Tree inventory for two lodge sites</h3>
-            <p class="project-role">Point-cloud &amp; raster analysis</p>
-            <p class="project-sum">Position, height and crown radius for every tree on two lodge sites in Tanzania, from drone LiDAR and photogrammetry.</p>
-            <p class="project-impact"><strong>435</strong>trees with positions, heights and crown radii</p>
-            <ul class="stack"><li>TerraScan</li><li>Orthophoto</li><li>DTM / DSM</li><li>Python</li><li>Watershed segmentation</li></ul>
-            <button class="project-open" type="button">Read case study <span class="arr" aria-hidden="true">→</span></button>
-          </div>
-          <template>
-            <h3>Context</h3>
-            <p>Two lodge sites in Tanzania were mapped from the air with drone LiDAR and photogrammetry: Pungume Island (about 2.4 km²) and a site in the Serengeti (about 2 km²). This was desk work on data captured by others.</p>
-            <h3>Method</h3>
-            <ul>
-              <li>Classified the airborne LiDAR in TerraScan.</li>
-              <li>Digitised individual trees as points on the orthophoto.</li>
-              <li>Overlaid the points on the DTM and DSM to read ground and crown elevations, then subtracted them to get each tree's height.</li>
-              <li>Ran a watershed segmentation algorithm in Python to estimate each crown's radius.</li>
-            </ul>
-            <h3>Outcome</h3>
-            <p>Position, height and approximate crown radius for 435 trees.</p>
           </template>
         </article>
 
@@ -1111,16 +1061,14 @@ img.tile{object-fit:cover}
             <h3 class="col-head">Project register</h3>
             <p class="register-note">Every job in my signed Work-Integrated Learning logbook, newest first. Client names are withheld.</p>
           </div>
-          <p class="register-count"><span>22</span> jobs · Jul 2025 – Jul 2026</p>
+          <p class="register-count"><span>20</span> jobs · Jul 2025 – Jul 2026</p>
         </div>
         <ol class="reg-list" id="reg-list">
           <li class="reg-row"><span class="reg-when">Jul 2026</span><div class="reg-site"><strong>Lodge bridge</strong><span>Skukuza, Kruger National Park</span></div><p class="reg-work">Digitised the permanent and structural features on part of a bridge.</p><span class="reg-tag">Drafting</span></li>
           <li class="reg-row"><span class="reg-when">Jul 2026</span><div class="reg-site"><strong>Shopping-centre parking</strong><span>Johannesburg South</span></div><p class="reg-work">Processed SLAM point clouds, imported survey data, and extracted parking lines from the orthomosaic using pixel values and the raster calculator.</p><span class="reg-tag">SLAM · Raster</span></li>
           <li class="reg-row"><span class="reg-when">Jul 2026</span><div class="reg-site"><strong>Boiler and tank farm</strong><span>Centurion</span></div><p class="reg-work">Registered and processed the point cloud; the scanning was done by a colleague.</p><span class="reg-tag">Registration</span></li>
-          <li class="reg-row"><span class="reg-when">Jun – Jul 2026</span><div class="reg-site"><strong>Lodge sites</strong><span>Pungume Island &amp; Serengeti, Tanzania</span></div><p class="reg-work">Tree positions, heights and crown radii for 435 trees.</p><button class="reg-case" type="button" data-case="p-trees">Case study →</button></li>
           <li class="reg-row"><span class="reg-when">Jun 2026</span><div class="reg-site"><strong>Vacant building</strong><span>Sandton</span></div><p class="reg-work">RTC360 scanning, registration and cleaning; drafted kerbs, footprints and overhangs in BricsCAD and MicroStation.</p><span class="reg-tag">TLS · Drafting</span></li>
           <li class="reg-row"><span class="reg-when">Jun 2026</span><div class="reg-site"><strong>Beverage production site</strong><span>Wadeville</span></div><p class="reg-work">Registered and georeferenced point clouds captured with the FJD Trion S2 mobile SLAM system.</p><span class="reg-tag">SLAM · Registration</span></li>
-          <li class="reg-row"><span class="reg-when">May – Jul 2026</span><div class="reg-site"><strong>Mining-right land tenure</strong><span>KwaZulu-Natal</span></div><p class="reg-work">Database schema, project proposal and a live web GIS viewer for the farm portions.</p><button class="reg-case" type="button" data-case="p-tenure">Case study →</button></li>
           <li class="reg-row"><span class="reg-when">May – Jun 2026</span><div class="reg-site"><strong>Shopping-centre wet services</strong><span>Johannesburg</span></div><p class="reg-work">Web-based stormwater and sewer "net viewer", GIS database management and QC of surveyed manholes.</p><button class="reg-case" type="button" data-case="p-net">Case study →</button></li>
           <li class="reg-row"><span class="reg-when">May 2026</span><div class="reg-site"><strong>Office precinct</strong><span>Sandton</span></div><p class="reg-work">Registered and georeferenced point clouds; drafted topographic features and basement floor levels into DWG.</p><span class="reg-tag">Registration · Drafting</span></li>
           <li class="reg-row"><span class="reg-when">Apr – May 2026</span><div class="reg-site"><strong>Glass-manufacturing site</strong><span>Nigel</span></div><p class="reg-work">Waste earthworks and stockpile volume computations in BricsCAD.</p><span class="reg-tag">Volumes</span></li>
